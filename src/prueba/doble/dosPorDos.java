@@ -10,7 +10,7 @@ package prueba.doble;
  */
 public class dosPorDos {
     
-      static final int N = 2;
+      static final int N = 3;
       
  //dbdrb
     // Function to get cofactor of
@@ -149,7 +149,7 @@ static void display(float matriz[][])
 	for (int i = 0; i < N; i++)
 	{
 		for (int j = 0; j < N; j++)
-			System.out.printf("%.6f ",matriz[i][j]);
+			System.out.printf("%.2f ",matriz[i][j]);
 		System.out.println();
 	}
 }

@@ -39,7 +39,7 @@ import static prueba.doble.dosPorDos.inverse;
             do {
                 literal = in.nextLine().toLowerCase().charAt(0);
             } while(!Character.isLetter(literal) || literales.contains(String.valueOf(literal)));
-            literales = literales + literal;
+            literales += literal;
         }
         
         for(i=0; i<n; i++)
