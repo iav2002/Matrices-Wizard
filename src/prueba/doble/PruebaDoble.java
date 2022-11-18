@@ -15,7 +15,7 @@ import static prueba.doble.dosPorDos.inverse;
  * @author ignac
  */
 //ahisbciabcui
-
+// ya funciono perrita 
     public class PruebaDoble {
     /**
      * @param args the command line arguments
