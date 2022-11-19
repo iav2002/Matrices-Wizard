@@ -22,6 +22,11 @@ import static prueba.doble.dosPorDos.inverse;
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        //WELCOMING PROCESS
+        Intro ar = new Intro();
+        ar.Intro();
+        
         int [][]adj = new int[N][N]; // To store adjoint of A[][]
 
 	float [][]inv = new float[N][N];
