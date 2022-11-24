@@ -4,11 +4,12 @@
  */
 package prueba.doble;
 import java.util.Scanner;
-import static prueba.doble.dosPorDos.N;
+
 import static prueba.doble.dosPorDos.adjoint;
 import static prueba.doble.dosPorDos.determinant;
 import static prueba.doble.dosPorDos.display;
 import static prueba.doble.dosPorDos.inverse;
+import static prueba.doble.dosPorDos.userInput;
 
 /**
  *
@@ -24,20 +25,20 @@ import static prueba.doble.dosPorDos.inverse;
     public static void main(String[] args) {
         
         //WELCOMING PROCESS
-        Intro ar = new Intro();
-        ar.Intro();
+        int N = 2;	
         
-        int [][]adj = new int[N][N]; // To store adjoint of A[][]
+        int i, j, k, n, l;
 
-	float [][]inv = new float[N][N];
-        int i, j, k, n;
         float termino;
         String literales = "";
         char literal;
         Scanner in = new Scanner(System.in);
-        System.out.print("Type if is an 2x2 ecuation or a 3x3 (n): ");
-        n = Integer.parseInt(in.nextLine());
+        Scanner myKb = new Scanner(System.in);
+         
+        n = userInput();
         int[][] matriz = new int[n][n];
+        int [][]adj = new int[n][n]; // To store adjoint of A[][]
+	float [][]inv = new float[n][n];
         for(i=0; i<n; i++)
         {
             System.out.print("Type the letter of the first variable " + (i+1) + ": ");
@@ -56,9 +57,9 @@ import static prueba.doble.dosPorDos.inverse;
             }
         }
  
-        System.out.print("Determinant " + "of the matrix is : " + determinant(matriz, N));
+        System.out.print("Determinant " + "of the matrix is : " + determinant(matriz, n));
     
-    System.out.print("Input matrix is :\n");
+    System.out.println("Input matrix is :\n");
 	display(matriz);
 
 	System.out.print("\nThe Adjoint is :\n");
