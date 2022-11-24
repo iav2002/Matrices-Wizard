@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class dosPorDos {
   
     
-    static final int N = userInput();
+   static final int N = userInput();
     
    static int userInput() {
 

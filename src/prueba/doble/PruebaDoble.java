@@ -25,9 +25,9 @@ import static prueba.doble.dosPorDos.userInput;
     public static void main(String[] args) {
         
         //WELCOMING PROCESS
-        int N = 2;	
+        	
         
-        int i, j, k, n, l;
+        int i, j,  n ;
 
         float termino;
         String literales = "";
@@ -35,7 +35,7 @@ import static prueba.doble.dosPorDos.userInput;
         Scanner in = new Scanner(System.in);
         Scanner myKb = new Scanner(System.in);
          
-        n = userInput();
+       n = userInput();
         int[][] matriz = new int[n][n];
         int [][]adj = new int[n][n]; // To store adjoint of A[][]
 	float [][]inv = new float[n][n];
