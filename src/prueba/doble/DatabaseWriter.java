@@ -8,7 +8,7 @@ package prueba.doble;
  *
  * @author bgandara
  */
-public class DatabaseWriter {
+public class DatabaseWriter{
    static final String DB_URL = "";
    static final String USER = "";
    static final String PASS = "";
@@ -17,4 +17,8 @@ public class DatabaseWriter {
        
        return false;
    }
+
+    public void dataInput() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
