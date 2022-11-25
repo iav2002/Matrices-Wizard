@@ -35,7 +35,7 @@ import static prueba.doble.dosPorDos.userInput;
         Scanner in = new Scanner(System.in);
         Scanner myKb = new Scanner(System.in);
          
-       n = userInput();
+       n = N;
         
         int [][]adj = new int[n][n]; // To store adjoint of A[][]
 	float [][]inv = new float[n][n];
