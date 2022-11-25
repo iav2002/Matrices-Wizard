@@ -4,6 +4,7 @@
  */
 package prueba.doble;
 import java.util.Scanner;
+import static prueba.doble.dosPorDos.N;
 
 import static prueba.doble.dosPorDos.adjoint;
 import static prueba.doble.dosPorDos.determinant;
@@ -25,7 +26,6 @@ import static prueba.doble.dosPorDos.userInput;
     public static void main(String[] args) {
         
         //WELCOMING PROCESS
-        	
         
         int i, j,  n ;
 
@@ -36,9 +36,11 @@ import static prueba.doble.dosPorDos.userInput;
         Scanner myKb = new Scanner(System.in);
          
        n = userInput();
-        int[][] matriz = new int[n][n];
+        
         int [][]adj = new int[n][n]; // To store adjoint of A[][]
 	float [][]inv = new float[n][n];
+        
+        int[][] matriz = new int[N][N+1];
         for(i=0; i<n; i++)
         {
             System.out.print("Type the letter of the first variable " + (i+1) + ": ");
@@ -55,11 +57,14 @@ import static prueba.doble.dosPorDos.userInput;
                 System.out.print("Inter the  coeficient '" + literales.charAt(j) + "' of the ecuation " + (i+1) + ": ");
                 matriz[i][j] = Integer.parseInt(in.nextLine());
             }
+             System.out.print("Ingrese la constante de la ecuaci\242n " + (i+1) + ": ");
+            matriz[i][n] = Integer.parseInt(in.nextLine());
         }
- 
+        
+        
         System.out.print("Determinant " + "of the matrix is : " + determinant(matriz, n));
     
-    System.out.println("Input matrix is :\n");
+        System.out.println("Input matrix is :\n");
 	display(matriz);
 
 	System.out.print("\nThe Adjoint is :\n");
@@ -70,6 +75,9 @@ import static prueba.doble.dosPorDos.userInput;
 	if (inverse(matriz, inv))
 		display(inv);
 
-     }
+    
+    }
+    
+    
     }
 

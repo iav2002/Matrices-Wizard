@@ -1,5 +1,5 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/lcense-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package prueba.doble;
@@ -22,7 +22,7 @@ public class dosPorDos {
         boolean valid = false; // if salse will go to the catch
         int userInput; // so the program can compared with the user input
         
-            System.out.println("Type if is an 2x2 ecuation or a 3x3 (n):");
+            System.out.print("Type if is an 2x2 ecuation or a 3x3 (n): ");
               userInput = Integer.parseInt(myKb.nextLine());  // Validation for the input to be as requested in the "prompt"
             
             if (userInput > 1) 
