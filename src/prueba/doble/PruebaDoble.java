@@ -9,6 +9,7 @@ import static prueba.doble.dosPorDos.N;
 import static prueba.doble.dosPorDos.adjoint;
 import static prueba.doble.dosPorDos.determinant;
 import static prueba.doble.dosPorDos.display;
+import static prueba.doble.dosPorDos.displayComEcu;
 import static prueba.doble.dosPorDos.inverse;
 import static prueba.doble.dosPorDos.userInput;
 
@@ -27,17 +28,14 @@ import static prueba.doble.dosPorDos.userInput;
         
         //WELCOMING PROCESS
         
-        int i, j,  n ;
-
-        float termino;
+        int i, j, n ;
         String literales = "";
         char literal;
         Scanner in = new Scanner(System.in);
-        Scanner myKb = new Scanner(System.in);
-         
-       n = N;
         
-        int [][]adj = new int[n][n]; // To store adjoint of A[][]
+        n = N;
+        
+        
 	float [][]inv = new float[n][n];
         
         int[][] matriz = new int[N][N+1];
@@ -65,11 +63,9 @@ import static prueba.doble.dosPorDos.userInput;
         System.out.print("Determinant " + "of the matrix is : " + determinant(matriz, n));
     
         System.out.println("Input matrix is :\n");
-	display(matriz);
+	displayComEcu(matriz);
 
-	System.out.print("\nThe Adjoint is :\n");
-	adjoint(matriz, adj);
-	display(adj);
+	
 
 	System.out.print("\nThe Inverse is :\n");
 	if (inverse(matriz, inv))

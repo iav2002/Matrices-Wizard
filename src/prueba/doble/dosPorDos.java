@@ -25,7 +25,7 @@ public class dosPorDos {
             System.out.print("Type if is an 2x2 ecuation or a 3x3 (n): ");
               userInput = Integer.parseInt(myKb.nextLine());  // Validation for the input to be as requested in the "prompt"
             
-            if (userInput > 1) 
+            if (userInput > 0) 
                 {
                     valid = true;
                              
@@ -172,5 +172,19 @@ static void display(float matriz[][])
 		System.out.println();
 	}
 }
-    
+      static void displayComEcu(int matriz[][])
+{
+    	
+	for (int i = 0; i < N; i++)
+	{
+		for (int j = 0; j < N; j++)
+                System.out.print(matriz[i][j] + "x");
+		System.out.println();
+                        for (int k = 0; k < N; k++){
+                System.out.print(matriz[i][k] + " y");
+		System.out.println();
+                }
+			
+	}
+}
 }
