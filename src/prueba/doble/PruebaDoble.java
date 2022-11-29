@@ -28,7 +28,7 @@ import static prueba.doble.dosPorDos.userInput;
         
         //WELCOMING PROCESS
         
-        int i, j , n;
+        int i, j ,n;
         String literales = "";
         char literal;
         Scanner in = new Scanner(System.in);
@@ -38,7 +38,7 @@ import static prueba.doble.dosPorDos.userInput;
         
 	float [][]inv = new float[n][n];
         int [][]conts = new int[n][1];
-        int[][] matriz = new int[N][N+1];
+        int[][] matriz = new int[n][n];
         for(i=0; i<n; i++)
         {
             System.out.print("Type the letter of the first variable " + (i+1) + ": ");
@@ -59,14 +59,22 @@ import static prueba.doble.dosPorDos.userInput;
             conts[i][0] = Integer.parseInt(in.nextLine());
         }
         
-        float result[][] = new float [n][1];
-        for (int e = 0; e < n; e++) 
+        System.out.print("Determinant " + "of the matrix is : " + determinant(matriz, n));
+    
+//        System.out.println("Input matrix is :\n");
+//	displayComEcu(matriz);
+
+	
+	if (inverse(matriz, inv));
+
+	double result[][] = new double[n][1];
+        for ( i = 0; i < n; i++) 
         {
-            for (int w = 0; w < 1; w++) 
+            for ( j = 0; j < 1; j++) 
             {
                 for (int k = 0; k < n; k++)
                 {	 
-                    result[e][w] = result[e][w] + inv[e][k] * conts[k][e];
+                    result[i][j] = result[i][j] + inv[i][k] * conts[k][j];
                 }
             }
         }
@@ -76,20 +84,6 @@ import static prueba.doble.dosPorDos.userInput;
         {
             System.out.println(result[b][0] + " ");
         }
-       
-        
-        
-        System.out.print("Determinant " + "of the matrix is : " + determinant(matriz, n));
-    
-//        System.out.println("Input matrix is :\n");
-//	displayComEcu(matriz);
-
-	System.out.print("\nThe Inverse is :\n");
-	if (inverse(matriz, inv))
-		display(inv);
-
-
-	
     
     }
     
