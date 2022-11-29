@@ -163,28 +163,12 @@ static boolean inverse(int matriz[][], float [][]inverse)
 }
 static void display(float matriz[][])
 {
-   
-    		
+  		
     for (int i = 0; i < N; i++)
 	{
-		for (int j = 0; j < N; j++)
-			System.out.printf("%.2f ",matriz[i][j]);
+		System.out.printf("%.2f ",matriz[i][0]);
 		System.out.println();
 	}
 }
-      static void displayComEcu(int matriz[][])
-{
-    	
-	for (int i = 0; i < N; i++)
-	{
-		for (int j = 0; j < N; j++)
-                System.out.print(matriz[i][j] + "x");
-		System.out.println();
-                        for (int k = 0; k < N; k++){
-                System.out.print(matriz[i][k] + " y");
-		System.out.println();
-                }
-			
-	}
-}
+      
 }
