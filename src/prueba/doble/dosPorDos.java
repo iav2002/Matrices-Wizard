@@ -151,7 +151,7 @@ static boolean inverse(int matriz[][], float [][]inverse)
     
     
     
-   static void display(int matriz[][])
+   static void Display(int matriz[][])
 {
     	
 	for (int i = 0; i < N; i++)

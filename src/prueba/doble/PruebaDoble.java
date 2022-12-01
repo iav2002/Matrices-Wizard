@@ -7,7 +7,7 @@ import java.util.Scanner;
 import static prueba.doble.dosPorDos.N;
 import static prueba.doble.dosPorDos.determinant;
 import static prueba.doble.dosPorDos.inverse;
-
+import static prueba.doble.dosPorDos.display;
 
 /**
  *
@@ -63,11 +63,12 @@ import static prueba.doble.dosPorDos.inverse;
         
         //saca la determinante, pero es lo podemos borrar, sirve sin esto 
         System.out.println("Determinant of the matrix is : " + determinant(matriz, n));
-        
+      
     
 	//chequear si la matriz tiene inversa, si no tiene bota error de no tener inversa y acaba en 0 NO ERROR
 	if (inverse(matriz, inv));
-
+        display(inv);
+        
         //una vez que vemos que HAY inversa, esta parte hace la multiplicacion de INVERSA * CONSTANTES 
         // inv * conts = resultado
 	float result[][] = new float [n][1];
