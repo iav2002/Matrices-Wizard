@@ -57,7 +57,7 @@ import static prueba.doble.dosPorDos.display;
                 matriz[i][j] = Integer.parseInt(in.nextLine());
             }
              //Saca las constantes y las guarda en conts
-            System.out.print("The constant of the ecuation" + (i+1) + ": ");
+            System.out.print("The constant of the ecuation " + (i+1) + ": ");
             conts[i][0] = Integer.parseInt(in.nextLine());
         }
         

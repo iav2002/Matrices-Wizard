@@ -166,9 +166,12 @@ static void display(float matriz[][])
   		
     for (int i = 0; i < N; i++)
 	{
-		System.out.printf("%.2f ",matriz[i][0]);
-		System.out.println();
-	}
+             for (int j = 0; j < N; j++)
+		
+                System.out.printf("%.2f ", matriz[i][j]);
+                 System.out.println();
+	
+        }
 }
       
 }
