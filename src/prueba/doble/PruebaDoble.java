@@ -24,50 +24,52 @@ import static prueba.doble.dosPorDos.inverse;
     public static void main(String[] args) {
         
         //WELCOMING PROCESS
-        Intro ar = new Intro();
-        ar.Intro();
+//        Intro ar = new Intro();
+//        ar.Intro();
+        CreateDatabase myDb = new CreateDatabase();
+        myDb.CreateDatabase();
         
-        int [][]adj = new int[N][N]; // To store adjoint of A[][]
-
-	float [][]inv = new float[N][N];
-        int i, j, k, n;
-        float termino;
-        String literales = "";
-        char literal;
-        Scanner in = new Scanner(System.in);
-        System.out.print("Type if is an 2x2 ecuation or a 3x3 (n): ");
-        n = Integer.parseInt(in.nextLine());
-        int[][] matriz = new int[n][n];
-        for(i=0; i<n; i++)
-        {
-            System.out.print("Type the letter of the first variable " + (i+1) + ": ");
-            do {
-                literal = in.nextLine().toLowerCase().charAt(0);
-            } while(!Character.isLetter(literal) || literales.contains(String.valueOf(literal)));
-            literales += literal;
-        }
-        
-        for(i=0; i<n; i++)
-        {
-            for(j=0; j<n; j++)
-            {
-                System.out.print("Inter the  coeficient '" + literales.charAt(j) + "' of the ecuation " + (i+1) + ": ");
-                matriz[i][j] = Integer.parseInt(in.nextLine());
-            }
-        }
- 
-        System.out.print("Determinant " + "of the matrix is : " + determinant(matriz, N));
-    
-    System.out.print("Input matrix is :\n");
-	display(matriz);
-
-	System.out.print("\nThe Adjoint is :\n");
-	adjoint(matriz, adj);
-	display(adj);
-
-	System.out.print("\nThe Inverse is :\n");
-	if (inverse(matriz, inv))
-		display(inv);
+//        int [][]adj = new int[N][N]; // To store adjoint of A[][]
+//
+//	float [][]inv = new float[N][N];
+//        int i, j, k, n;
+//        float termino;
+//        String literales = "";
+//        char literal;
+//        Scanner in = new Scanner(System.in);
+//        System.out.print("Type if is an 2x2 ecuation or a 3x3 (n): ");
+//        n = Integer.parseInt(in.nextLine());
+//        int[][] matriz = new int[n][n];
+//        for(i=0; i<n; i++)
+//        {
+//            System.out.print("Type the letter of the first variable " + (i+1) + ": ");
+//            do {
+//                literal = in.nextLine().toLowerCase().charAt(0);
+//            } while(!Character.isLetter(literal) || literales.contains(String.valueOf(literal)));
+//            literales += literal;
+//        }
+//        
+//        for(i=0; i<n; i++)
+//        {
+//            for(j=0; j<n; j++)
+//            {
+//                System.out.print("Inter the  coeficient '" + literales.charAt(j) + "' of the ecuation " + (i+1) + ": ");
+//                matriz[i][j] = Integer.parseInt(in.nextLine());
+//            }
+//        }
+// 
+//        System.out.print("Determinant " + "of the matrix is : " + determinant(matriz, N));
+//    
+//    System.out.print("Input matrix is :\n");
+//	display(matriz);
+//
+//	System.out.print("\nThe Adjoint is :\n");
+//	adjoint(matriz, adj);
+//	display(adj);
+//
+//	System.out.print("\nThe Inverse is :\n");
+//	if (inverse(matriz, inv))
+//		display(inv);
 
      }
     }
