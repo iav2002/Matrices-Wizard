@@ -23,9 +23,9 @@ import static prueba.doble.dosPorDos.inverse;
      */
     public static void main(String[] args) {
         
-        //WELCOMING PROCESS
-        Intro ar = new Intro();
-        ar.Intro();
+        CreateDatabase myDb = new CreateDatabase();
+        myDb.CreateDatabase();
+        
         
         int [][]adj = new int[N][N]; // To store adjoint of A[][]
 

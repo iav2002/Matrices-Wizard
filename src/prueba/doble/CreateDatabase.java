@@ -18,7 +18,8 @@ import java.sql.*;
 public class CreateDatabase {
     
     //JDBC driver name and datbase URL
-    static final String JDBC_DRIVER = "jdbc:mysql://localhost:3306/?user=root";
+//    static final String dbName = "MatricesWizard";
+   // static final String JDBC_DRIVER = "jdbc:mysql://localhost:3306/?user=root";
     static final String DB_URL = "jdbc:mysql://localhost/";
     
     //Database credentials
@@ -43,20 +44,20 @@ public class CreateDatabase {
             System.out.println("Creating database...");
             stmt = conn.createStatement();
             
-            String sql = "CREATE DATABASE MatricesUsers";
+            String sql = "CREATE DATABASE MatricesWizard";
             stmt.executeUpdate(sql);
             System.out.println("Database created succesfully...");
             
             //Now on, I will be creating the table of USERS
             
-            stmt.execute("USE MatricesUsers;");
+            stmt.execute("USE MatricesWizard;");
             
             stmt = conn.createStatement();
             
             //Using "CREATE TABLE' statement to create a new table
             //with the desired attributes
             
-            sql = "CREATE TABLE accounts ("
+            sql = "CREATE TABLE logins ("
                 + "user_id INT PRIMARY KEY AUTO_INCREMENT,"
                 + "name VARCHAR(30) NOT NULL,"
                 + "password VARCHAR (30) NOT NULL,"
