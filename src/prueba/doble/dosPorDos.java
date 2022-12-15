@@ -19,7 +19,7 @@ public class dosPorDos {
    static int userInput() {
 
         Scanner myKb = new Scanner(System.in);
-        boolean valid = false; // if salse will go to the catch
+        // if salse will go to the catch
         int userInput; // so the program can compared with the user input
         
             System.out.print("Type if is an 2x2 ecuation or a 3x3 (n): ");
@@ -27,8 +27,6 @@ public class dosPorDos {
             
             if (userInput > 0) 
                 {
-                    valid = true;
-                             
                 }     
         return (userInput);  // we have the valid user input
 
