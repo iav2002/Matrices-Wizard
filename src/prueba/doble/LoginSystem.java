@@ -4,6 +4,7 @@
  */
 package prueba.doble;
 import java.sql.*;
+import java.util.Scanner;
 /**
  *
  * @author ignacioalarconvarela
@@ -24,6 +25,10 @@ public class LoginSystem {
         }
         
         // Create the table to store login and password information
+        
+        //ID AUTO INCREMENTATIVO
+        //ROL, ADMIN O USER 
+        //INSERTAR ADMIN
         String createTableSql = "CREATE TABLE logins (login VARCHAR(20), password VARCHAR(20))";
         Statement stmt = conn.createStatement();
         try {
@@ -35,7 +40,8 @@ public class LoginSystem {
     }
     
     // Method to insert a login and password into the table
-    public void insertLogin(String login, String password) throws SQLException {
+    public void SignUP(String login, String password) throws SQLException {
+        
         String insertSql = "INSERT INTO logins (login, password) VALUES ('" + login + "', '" + password + "')";
         Statement stmt = conn.createStatement();
         try {
@@ -46,16 +52,32 @@ public class LoginSystem {
         }
     }
     
-    // Method to verify a login and password
-    public boolean verifyLogin(String login, String password) throws SQLException {
+    
+    /// Method to get the password for a login
+    public String getPasswordForLogin(String login) throws SQLException {
         String verifySql = "SELECT password FROM logins WHERE login = '" + login + "'";
         Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(verifySql);
         if (rs.next()) {
             String passwordFromDb = rs.getString("password");
-            return password.equals(passwordFromDb);
+            System.out.print("Enter username: ");
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("Enter password: ");
+            String password = scanner.nextLine();
+            if (password.equals(passwordFromDb)) {
+                System.out.println("Exito");
+                return passwordFromDb;
+                
+            } else {
+                System.out.println("Incorrect password. Please try again.");
+                return getPasswordForLogin(login);
+            }
         } else {
-            return false;
-        }
+            System.out.println("No such login was found in the database. Please try again.");
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("Enter login: ");
+            String newLogin = scanner.nextLine();
+            return getPasswordForLogin(newLogin);
     }
+}
 }
