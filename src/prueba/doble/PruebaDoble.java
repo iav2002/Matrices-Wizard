@@ -51,9 +51,15 @@ import java.util.Scanner;
                 //USER O ADMIN ??? 
                 //admin o no admin desplegar dos disintos menu de opcines 
                 System.out.println("Time to verify the login!");
+                
+                String fInput;
                 String sInput;
+               System.out.print("Please introduce your username:");             
+                fInput = mySC.next();
+                
+                System.out.print("Introduce your password:");          
                 sInput = mySC.next();
-                myL.getPasswordForLogin(sInput);
+                myL.getPasswordForLogin(fInput,sInput);
                 
                 
                }

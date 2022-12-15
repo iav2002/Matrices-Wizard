@@ -52,32 +52,57 @@ public class LoginSystem {
         }
     }
     
-    
-    /// Method to get the password for a login
-    public String getPasswordForLogin(String login) throws SQLException {
-        String verifySql = "SELECT password FROM logins WHERE login = '" + login + "'";
+    public String getPasswordForLogin(String login, String password) throws SQLException {
+        String verifySql = "SELECT password FROM logins WHERE login = '" + login + "' AND password = '" + password + "'";
         Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(verifySql);
         if (rs.next()) {
-            String passwordFromDb = rs.getString("password");
-            System.out.print("Enter username: ");
-            Scanner scanner = new Scanner(System.in);
-            System.out.print("Enter password: ");
-            String password = scanner.nextLine();
-            if (password.equals(passwordFromDb)) {
-                System.out.println("Exito");
-                return passwordFromDb;
-                
-            } else {
-                System.out.println("Incorrect password. Please try again.");
-                return getPasswordForLogin(login);
-            }
+            // Login and password match the ones in the database
+            System.out.println("SUCCESS");
+            return password;
         } else {
-            System.out.println("No such login was found in the database. Please try again.");
+            System.out.println("Incorrect login or password. Please try again.");
             Scanner scanner = new Scanner(System.in);
             System.out.print("Enter login: ");
             String newLogin = scanner.nextLine();
-            return getPasswordForLogin(newLogin);
-    }
+            System.out.print("Enter password: ");
+            String newPassword = scanner.nextLine();
+            return getPasswordForLogin(newLogin, newPassword);
+        }
 }
+    
+    
+    
+    
+    
+    
+    
+    /// Method to get the password for a login
+//    public String getPasswordForLogin(String login) throws SQLException {
+//        String verifySql = "SELECT password FROM logins WHERE login = '" + login + "'";
+//        Statement stmt = conn.createStatement();
+//         System.out.print("Enter username: ");
+//        ResultSet rs = stmt.executeQuery(verifySql);
+//        if (rs.next()) {
+//            String passwordFromDb = rs.getString("password");
+//           
+//            Scanner scanner = new Scanner(System.in);
+//            System.out.print("Enter password: ");
+//            String password = scanner.nextLine();
+//            if (password.equals(passwordFromDb)) {
+//                System.out.println("Exito");
+//                return passwordFromDb;
+//                
+//            } else {
+//                System.out.println("Incorrect password. Please try again.");
+//                return getPasswordForLogin(login);
+//            }
+//        } else {
+//            System.out.println("No such login was found in the database. Please try again.");
+//            Scanner scanner = new Scanner(System.in);
+//            System.out.print("Enter login: ");
+//            String newLogin = scanner.nextLine();
+//            return getPasswordForLogin(newLogin);
+//    }
 }
+
