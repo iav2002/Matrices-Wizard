@@ -55,35 +55,84 @@ import java.util.Scanner;
               sInput = mySC.next();
               myL.getPasswordForLogin(fInput,sInput);
               
-   String role = myL.getRoleForLogin(fInput, sInput);
-           switch (role) {
-               case "admin" -> {
-                   // Display menu for admins
-                   System.out.println("Welcome, admin! Here are your menu options:");
+  String role = myL.getRoleForLogin(fInput, sInput); //chequea que role tiene el usuario que acaba de logearse
+        if (role.equals("admin")) {
+            // Display menu for admins
+                 System.out.println("Welcome, admin! Here are your menu options:");
                    System.out.println("1. - Modify your profile");
                    System.out.println("2. - Access a list of all other users in the system");
                    System.out.println("3. - Remove other users from the system.");
                    System.out.println("4. - Review the operations performed by other users");
                   System.out.println("5. - Salir");
-                  
-                   // ...
-               }
-               case "user" -> {
-                   // Display menu for users
+         switch (choice) {
+          case 1 -> {   
+            // crear metodo para poder modificar Admin
+       
+              
+          }
+         
+          case 2->{
+              //crear metodo para ver los usuarios sign upeados (llamar desde login system)
+          }
+         
+          case 3->{
+              //poder eliminar usuarios 
+              
+              
+          }
+       
+          case 4->{
+             //ver operaciones hechas por un usuario
+            
+          }
+          case 5->{
+             //salir
+            
+          }
+       }
+        
+           
+            // ...
+      } else if (role.equals("user")) {
+            // Display menu for users
                    System.out.println("Welcome, user! Here are your menu options:");
                    System.out.println("1. Modify your profile");
                    System.out.println("2. Solve systems of linear equations of two and three variables");
                    System.out.println("3. See the system of equations computed and their solutions");
-
                    System.out.println("4. Exit");
-                   // ...
-               }
-               default -> // Display error message if role is not recognized
-                   System.out.println("Error: Unrecognized role " + role);
-           }
-           //admin o no admin desplegar dos disintos menu de opcines
-                          }
-
+            switch (choice) {
+          case 1 -> {   
+            // crear metodo para poder modificar Credenciales del user
+       
+              
+          }
+         
+          case 2->{
+              //Toda la parte de matematicas va aca
+          }
+         
+          case 3->{
+              //Ver los sistemas resueltos por el usuario en el que estamos logeados
+              
+              
+          }
+       
+          case 4->{
+             //salir
+          }
+ 
+       }
+            
+                   
+            // ...
+        } else {
+            // Display error message if role is not recognized
+               System.out.println("Error: Unrecognized role " + role);
+           
+      } 
+        
+     }// final de CASE 1 de Matrices Wizzard
+        
             case 2 -> { //singup
                 String fInput;
                 String sInput;
@@ -113,7 +162,7 @@ import java.util.Scanner;
     
      }
     
-    }
+  }
           
 
  
