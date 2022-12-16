@@ -108,6 +108,14 @@ import static prueba.doble.mathSystem.inverse;
                 }
                 case 3 -> {
                     //poder eliminar usuarios 
+                    System.out.println("What user would you like to delete? Choose by using the id");
+                    adminTools otherTool = new adminTools();
+                    otherTool.retrieveValuesFromTable("logins"); 
+                    Scanner nSc = new Scanner(System.in);
+                    int rowSelected = nSc.nextInt();
+                    otherTool.deleteValuesFromTable(rowSelected);
+                    otherTool.retrieveValuesFromTable("logins");
+                    System.out.println("press 5 to go back to the previous menu");
                 }
                 case 4 -> {
                     //ver operaciones hechas por un usuario
