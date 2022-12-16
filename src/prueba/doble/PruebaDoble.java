@@ -38,7 +38,7 @@ import java.util.Scanner;
 
           // Read the user's input
        int choice = mySC.nextInt();
-        // int option1Choice  = mySC.nextInt();
+       
           // Use a switch statement to execute the appropriate code for each option
         switch (choice) {
           case 1 -> {            
@@ -64,10 +64,11 @@ import java.util.Scanner;
                    System.out.println("3. - Remove other users from the system.");
                    System.out.println("4. - Review the operations performed by other users");
                   System.out.println("5. - Salir");
-         switch (choice) {
+         int option1Choice  = mySC.nextInt();
+         switch (option1Choice) {
           case 1 -> {   
             // crear metodo para poder modificar Admin
-       
+              System.out.println("hola");
               
           }
          
@@ -103,7 +104,7 @@ import java.util.Scanner;
             switch (choice) {
           case 1 -> {   
             // crear metodo para poder modificar Credenciales del user
-       
+            
               
           }
          
