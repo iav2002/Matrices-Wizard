@@ -149,7 +149,19 @@ import static prueba.doble.mathSystem.inverse;
         switch (option2Choice) {
           case 1 -> {   
             // crear metodo para poder modificar Credenciales del user
-              
+               Scanner aSc = new Scanner(System.in);
+                    System.out.println("Modify your information.");
+                    System.out.println("Introduce your new username:");
+                    String userNewName;
+                    userNewName = aSc.nextLine();
+                    System.out.println("Introduce your new password:");
+                    String userNewPass;
+                    userNewPass = aSc.nextLine();
+                    adminTools myTools = new adminTools();
+                    myTools.updateValues(userNewName, userNewPass);
+                    System.out.println("Modification applied successfully");
+                    System.out.println("press 4 to go back to the previous menu"); 
+                    break; //exit this funciton
               
           }
          
