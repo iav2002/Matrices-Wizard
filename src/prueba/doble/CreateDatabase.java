@@ -16,7 +16,7 @@ import java.sql.Statement;
 public class CreateDatabase  {
   
     //JDBC driver name and datbase URL
-    // static final String JDBC_DRIVER = "jdbc:mysql://localhost:3306/?user=root";
+ 
     static final String DB_URL = "jdbc:mysql://localhost:3306/?user=root";
     
     //Database credentials
@@ -30,32 +30,18 @@ public class CreateDatabase  {
         
         try{
             //Register JDBC driver
-            //Class.forName("com.mysql.jdbc.Driver");
-            
-            //Open a connection
-            System.out.println("Connecting to a selected database...");
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
-            System.out.println("Connected database successfully...");
-            
+            //conecting   
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);      
             //Execute a query
-            System.out.println("Creating database...");
-            stmt = conn.createStatement();
-            
+            stmt = conn.createStatement();           
             String sql = "CREATE DATABASE MatricesUsers";
             stmt.executeUpdate(sql);
             System.out.println("Database created succesfully...");
             
             //Now on, I will be creating the table of USERS
-             stmt.execute("USE MatricesUsers;");
-            
+            stmt.execute("USE MatricesUsers;");
             stmt = conn.createStatement();
-            
-            //Using "CREATE TABLE' statement to create a new table
-            //with the desired attributes
-           
-            
-           
-            
+                       
             return true;
             
         }catch(SQLException se){
