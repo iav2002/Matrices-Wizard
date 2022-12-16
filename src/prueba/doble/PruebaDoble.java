@@ -46,10 +46,12 @@ import java.util.Scanner;
           // Use a switch statement to execute the appropriate code for each option
           switch (choice) {
             case 1 -> {
-                //login 
-                //verificar que un usuario correcto 
+                //login TICK masomenos
+                //verificar que un usuario correcto TICK
+              //que si el usuario quiere salir 
                 //USER O ADMIN ??? 
-                //admin o no admin desplegar dos disintos menu de opcines 
+                
+               
                 System.out.println("Time to verify the login!");
                 
                 String fInput;
@@ -61,7 +63,7 @@ import java.util.Scanner;
                 sInput = mySC.next();
                 myL.getPasswordForLogin(fInput,sInput);
                 
-                
+                //admin o no admin desplegar dos disintos menu de opcines 
                }
 
             case 2 -> { //singup

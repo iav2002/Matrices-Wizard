@@ -29,13 +29,16 @@ public class LoginSystem {
         //ID AUTO INCREMENTATIVO
         //ROL, ADMIN O USER 
         //INSERTAR ADMIN
-        String createTableSql = "CREATE TABLE logins (login VARCHAR(20), password VARCHAR(20))";
-        Statement stmt = conn.createStatement();
-        try {
-            stmt.executeUpdate(createTableSql);
-        } catch (SQLException e) {
-            System.out.println("Unable to create the logins table.");
-            return;
+    String createTableSql = "CREATE TABLE logins (id INTEGER PRIMARY KEY AUTO_INCREMENT, login VARCHAR(20), password VARCHAR(20), role VARCHAR(10))";
+    String insertRowSql = "INSERT INTO logins (login, password, role) VALUES ('CCT', 'Dublin', 'admin')";
+
+    Statement stmt = conn.createStatement();
+    try {
+        stmt.executeUpdate(createTableSql);
+        stmt.executeUpdate(insertRowSql);
+           } catch (SQLException e) {
+        System.out.println("Unable to create the logins table or insert a row.");
+        return;
         }
     }
     
@@ -63,7 +66,7 @@ public class LoginSystem {
         } else {
             System.out.println("Incorrect login or password. Please try again.");
             Scanner scanner = new Scanner(System.in);
-            System.out.print("Enter login: ");
+            System.out.print("Enter Username: ");
             String newLogin = scanner.nextLine();
             System.out.print("Enter password: ");
             String newPassword = scanner.nextLine();
