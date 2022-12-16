@@ -108,13 +108,16 @@ import static prueba.doble.mathSystem.inverse;
                 }
                 case 3 -> {
                     //poder eliminar usuarios 
-                    System.out.println("What user would you like to delete? Choose by using the id");
+                    System.out.println("What user would you like to delete? Choose by using the id. Enter 0 to cancel");
                     adminTools otherTool = new adminTools();
-                    otherTool.retrieveValuesFromTable("logins"); 
-                    Scanner nSc = new Scanner(System.in);
-                    int rowSelected = nSc.nextInt();
+                    int rowSelected = 0;
+                    do{
+                        otherTool.retrieveValuesFromTable("logins"); 
+                        Scanner nSc = new Scanner(System.in);
+                        rowSelected = nSc.nextInt();
                     otherTool.deleteValuesFromTable(rowSelected);
-                    otherTool.retrieveValuesFromTable("logins");
+                    }while(rowSelected != 0);
+                    //otherTool.retrieveValuesFromTable("logins");
                     System.out.println("press 5 to go back to the previous menu");
                 }
                 case 4 -> {
