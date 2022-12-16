@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package prueba.doble;
 
@@ -9,22 +8,20 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.*;
 
 /**
  *
- * @author bernardogandara
+ * @author ignacioalarconvarela
  */
-public class CreateDatabase {
-    
+public class CreateDatabase  {
+  
     //JDBC driver name and datbase URL
-//    static final String dbName = "MatricesWizard";
-   // static final String JDBC_DRIVER = "jdbc:mysql://localhost:3306/?user=root";
-    static final String DB_URL = "jdbc:mysql://localhost/";
+ 
+    static final String DB_URL = "jdbc:mysql://localhost:3306/?user=root";
     
     //Database credentials
     static final String USER = "root";
-    static final String PASS = "root";
+    static final String PASS = "root1234";
     
     public boolean CreateDatabase(){
         
@@ -33,40 +30,18 @@ public class CreateDatabase {
         
         try{
             //Register JDBC driver
-            //Class.forName("com.mysql.jdbc.Driver");
-            
-            //Open a connection
-            System.out.println("Connecting to a selected database...");
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
-            System.out.println("Connected database successfully...");
-            
+            //conecting   
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);      
             //Execute a query
-            System.out.println("Creating database...");
-            stmt = conn.createStatement();
-            
-            String sql = "CREATE DATABASE MatricesWizard";
+            stmt = conn.createStatement();           
+            String sql = "CREATE DATABASE MatricesUsers";
             stmt.executeUpdate(sql);
             System.out.println("Database created succesfully...");
             
             //Now on, I will be creating the table of USERS
-            
-            stmt.execute("USE MatricesWizard;");
-            
+            stmt.execute("USE MatricesUsers;");
             stmt = conn.createStatement();
-            
-            //Using "CREATE TABLE' statement to create a new table
-            //with the desired attributes
-            
-            sql = "CREATE TABLE logins ("
-                + "user_id INT PRIMARY KEY AUTO_INCREMENT,"
-                + "name VARCHAR(30) NOT NULL,"
-                + "password VARCHAR (30) NOT NULL,"
-                + "role VARCHAR (30) NOT NULL"    
-                +    ")";
-            
-            stmt.executeUpdate(sql);
-            
-            
+                       
             return true;
             
         }catch(SQLException se){
@@ -100,3 +75,4 @@ public class CreateDatabase {
     }//end constructor
     
 }//end class
+

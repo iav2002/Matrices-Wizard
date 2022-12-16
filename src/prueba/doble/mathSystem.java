@@ -4,21 +4,36 @@
  */
 package prueba.doble;
 
+import java.util.Scanner;
+
 /**
  *
- * @author ignac
+ * @author ignacioalarconvarela
  */
-public class dosPorDos {
+public class mathSystem {
     
-      static final int N = 3;
-      
- //dbdrb
-    // Function to get cofactor of
-    // mat[p][q] in temp[][]. n is
-    // current dimension of mat[][]
+    
+    static final int N = userInput();
+    
+   static int userInput() {
+
+        Scanner myKb = new Scanner(System.in);
+        // if salse will go to the catch
+        int userInput; // so the program can compared with the user input
+        
+            System.out.print("Type if is an 2x2 ecuation or a 3x3 (n): ");
+              userInput = Integer.parseInt(myKb.nextLine());  // Validation for the input to be as requested in the "prompt"
+            
+            if (userInput > 0) 
+                {
+                }     
+        return (userInput);  // we have the valid user input
+
+    }
     static void getCofactor(int matriz[][], int temp[][],
                             int p, int q, int n)
     {
+       
         int i = 0, j = 0;
  
         // Looping for each element of
@@ -27,15 +42,9 @@ public class dosPorDos {
         {
             for (int col = 0; col < n; col++)
             {
-                // Copying into temporary matrix
-                // only those element which are
-                // not in given row and column
                 if (row != p && col != q)
                 {
                     temp[i][j++] = matriz[row][col];
-                    // Row is filled, so increase
-                    // row index and reset col
-                    // index
                     if (j == n - 1)
                     {
                         j = 0;
@@ -50,6 +59,7 @@ public class dosPorDos {
     of matrix. n is current dimension of mat[][]. */
     static int determinant(int matriz[][], int n)
     {
+       
         int D = 0; // Initialize result
  
         // Base case : if matrix contains single
@@ -80,8 +90,10 @@ public class dosPorDos {
     }
     static void adjoint(int matriz[][],int [][]adj)
 {
-	if (N == 1)
-	{
+   	
+     if (N == 1)
+	
+        {
 		adj[0][0] = 1;
 		return;
 	}
@@ -110,48 +122,52 @@ public class dosPorDos {
 //
 // Function to calculate and store inverse, returns false if
 // matrix is singular
-static boolean inverse(int matriz[][], float [][]inverse)
-{
-	// Find determinant of A[][]
-	int det = determinant(matriz, N);
-	if (det == 0)
-	{
-		System.out.print("Singular matrix, can't find its inverse");
-		return false;
-	}
+        static boolean inverse(int matriz[][], float [][]inverse)
+        {
+                // Find determinant of A[][]
 
-	// Find adjoint
-	int [][]adj = new int[N][N];
-	adjoint(matriz, adj);
+                int det = determinant(matriz, N);
+                if (det == 0)
+                {
+                        System.out.print("Singular matrix, can't find its inverse");
+                        return false;
+                }
 
-	// Find Inverse using formula "inverse(A) = adj(A)/det(A)"
-	for (int i = 0; i < N; i++)
-		for (int j = 0; j < N; j++)
-			inverse[i][j] = adj[i][j]/(float)det;
+                // Find adjoint
+                int [][]adj = new int[N][N];
+                adjoint(matriz, adj);
 
-	return true;
-}
+                // Find Inverse using formula "inverse(A) = adj(A)/det(A)"
+                for (int i = 0; i < N; i++)
+                        for (int j = 0; j < N; j++)
+                                inverse[i][j] = adj[i][j]/(float)det;
 
-    
-    
-    
-   static void display(int matriz[][])
-{
-	for (int i = 0; i < N; i++)
-	{
-		for (int j = 0; j < N; j++)
-			System.out.print(matriz[i][j]+ " ");
-		System.out.println();
-	}
-}
-static void display(float matriz[][])
-{
-	for (int i = 0; i < N; i++)
-	{
-		for (int j = 0; j < N; j++)
-			System.out.printf("%.2f ",matriz[i][j]);
-		System.out.println();
-	}
-}
-    
+                return true;
+        }
+
+
+
+
+           static void Display(int matriz[][])
+        {
+
+                for (int i = 0; i < N; i++)
+                {
+                        for (int j = 0; j < N; j++)
+                                System.out.print(matriz[i][j]+ " ");
+                        System.out.println();
+                }
+        }
+        static void display(float matriz[][])
+        {
+
+            for (int i = 0; i < N; i++)
+                {
+                     for (int j = 0; j < N; j++)
+
+                        System.out.printf("%.2f ", matriz[i][j]);
+                         System.out.println();
+
+                }
+        }
 }
