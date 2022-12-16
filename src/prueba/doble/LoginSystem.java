@@ -56,56 +56,72 @@ public class LoginSystem {
     }
     
     public String getPasswordForLogin(String login, String password) throws SQLException {
-        String verifySql = "SELECT password FROM logins WHERE login = '" + login + "' AND password = '" + password + "'";
-        Statement stmt = conn.createStatement();
-        ResultSet rs = stmt.executeQuery(verifySql);
-        if (rs.next()) {
-            // Login and password match the ones in the database
-            System.out.println("SUCCESS");
-            return password;
-        } else {
-            System.out.println("Incorrect login or password. Please try again.");
-            Scanner scanner = new Scanner(System.in);
-            System.out.print("Enter Username: ");
-            String newLogin = scanner.nextLine();
-            System.out.print("Enter password: ");
-            String newPassword = scanner.nextLine();
-            return getPasswordForLogin(newLogin, newPassword);
+    String verifySql = "SELECT password FROM logins WHERE login = ? AND password = ?";
+    try (PreparedStatement stmt = conn.prepareStatement(verifySql)) {
+        stmt.setString(1, login);
+        stmt.setString(2, password);
+        try (ResultSet rs = stmt.executeQuery()) {
+            if (rs.next()) {
+                // Login and password match the ones in the database
+                
+                System.out.println("SUCCESS");
+                return password;
+            } else {
+                System.out.println("Incorrect login or password. Please try again.");
+                Scanner scanner = new Scanner(System.in);
+                System.out.print("Enter Username: ");
+                String newLogin = scanner.nextLine();
+                System.out.print("Enter password: ");
+                String newPassword = scanner.nextLine();
+                return getPasswordForLogin(newLogin, newPassword);
+            }
         }
+    }
 }
+
+    
+   public String getRoleForLogin(String login, String password) throws SQLException {
+    String verifySql = "SELECT role FROM logins WHERE login = ? AND password = ?";
+    try (PreparedStatement stmt = conn.prepareStatement(verifySql)) {
+        stmt.setString(1, login);
+        stmt.setString(2, password);
+        try (ResultSet rs = stmt.executeQuery()) {
+            if (rs.next()) {
+                // Login and password match the ones in the database
+                
+                return rs.getString("role");
+                
+            } else {
+                return null;
+            }
+        }
+    }
+}
+
     
     
     
+    // VIEJO CODIGO PARA VERIFICACION DE USUARIO Y CONTRASENA, MEJORADO 
     
-    
-    
-    
-    /// Method to get the password for a login
-//    public String getPasswordForLogin(String login) throws SQLException {
-//        String verifySql = "SELECT password FROM logins WHERE login = '" + login + "'";
-//        Statement stmt = conn.createStatement();
-//         System.out.print("Enter username: ");
-//        ResultSet rs = stmt.executeQuery(verifySql);
-//        if (rs.next()) {
-//            String passwordFromDb = rs.getString("password");
-//           
-//            Scanner scanner = new Scanner(System.in);
-//            System.out.print("Enter password: ");
-//            String password = scanner.nextLine();
-//            if (password.equals(passwordFromDb)) {
-//                System.out.println("Exito");
-//                return passwordFromDb;
-//                
-//            } else {
-//                System.out.println("Incorrect password. Please try again.");
-//                return getPasswordForLogin(login);
-//            }
-//        } else {
-//            System.out.println("No such login was found in the database. Please try again.");
-//            Scanner scanner = new Scanner(System.in);
-//            System.out.print("Enter login: ");
-//            String newLogin = scanner.nextLine();
-//            return getPasswordForLogin(newLogin);
-//    }
+        //     public String getPasswordForLogin(String login, String password) throws SQLException {
+        //        String verifySql = "SELECT password FROM logins WHERE login = '" + login + "' AND password = '" + password + "'";
+        //        Statement stmt = conn.createStatement();
+        //        ResultSet rs = stmt.executeQuery(verifySql);
+        //        if (rs.next()) {
+        //            // Login and password match the ones in the database
+        //            System.out.println("SUCCESS");
+        //            return password;
+        //        } else {
+        //            System.out.println("Incorrect login or password. Please try again.");
+        //            Scanner scanner = new Scanner(System.in);
+        //            System.out.print("Enter Username: ");
+        //            String newLogin = scanner.nextLine();
+        //            System.out.print("Enter password: ");
+        //            String newPassword = scanner.nextLine();
+        //            return getPasswordForLogin(newLogin, newPassword);
+        //        }
+        //}
+
+
 }
 
