@@ -21,7 +21,7 @@ public class usertools {
     
     //Database credentials
     static final String USER = "root";
-    static final String PASS = "root";
+    static final String PASS = "root1234";
     
     public void updateValues(String login, String password) throws SQLException{
         

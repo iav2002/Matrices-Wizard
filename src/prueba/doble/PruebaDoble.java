@@ -101,6 +101,9 @@ import static prueba.doble.mathSystem.inverse;
                 }
                 case 2 -> {
                     //crear metodo para ver los usuarios sign upeados (llamar desde login system)
+                    adminTools otherTool = new adminTools();
+                    otherTool.retrieveValuesFromTable("logins");
+                    System.out.println("press 5 to go back to the previous menu");
                 }
                 case 3 -> {
                     //poder eliminar usuarios 

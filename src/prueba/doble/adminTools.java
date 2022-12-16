@@ -15,7 +15,7 @@ public class adminTools {
     
     //Database credentials
     static final String USER = "root";
-    static final String PASS = "root";
+    static final String PASS = "root1234";
     
     public void updateValues(String login, String password) throws SQLException{
         
@@ -40,5 +40,25 @@ public class adminTools {
             //Handle errors for JDBC
             se.printStackTrace();
     }
-    }  
+    }
+    public void retrieveValuesFromTable(String tableName) throws SQLException{
+        //Establish a connetion to the database
+        Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+        
+        //Create a Statement object
+        Statement stmt = conn.createStatement();
+        
+        //Execute a SELECT statement and process the result set
+        String sql = "SELECT * FROM " + tableName;
+        ResultSet rs = stmt.executeQuery(sql);
+        while(rs.next()){
+            int id = rs.getInt("id");
+            String name = rs.getString("login");
+            String role = rs.getString("role");
+            System.out.println(id + " " + name + " " + role);
+        }
+        
+        //Close the connection
+        conn.close();
+    }
 }
