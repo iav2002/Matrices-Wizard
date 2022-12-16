@@ -4,6 +4,7 @@
  */
 package prueba.doble;
 import java.sql.SQLException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
@@ -48,13 +49,14 @@ import java.util.Scanner;
           
              String fInput;
              String sInput;
+            
              System.out.print("Please introduce your username:");             
-             fInput = mySC.next();
+             aInput = mySC.next();
                 
               System.out.print("Introduce your password:");          
-              sInput = mySC.next();
+              bInput = mySC.next();
               myL.getPasswordForLogin(fInput,sInput);
-              
+               myL.getPasswordForLogin(aInput,bInput);
             String role = myL.getRoleForLogin(fInput, sInput); //chequea que role tiene el usuario que acaba de logearse
       
          if (role.equals("admin")) {
@@ -67,9 +69,16 @@ import java.util.Scanner;
                   System.out.println("5. - Return to previous menu");
          
          while (true) {
-            int option1Choice  = mySC.nextInt();
-
-            switch (option1Choice) {
+            int option1Choice;
+            try {
+                option1Choice = mySC.nextInt();
+            } catch (InputMismatchException e) {
+                // input is not an integer, display error message and continue
+                System.out.println("Invalid input, please enter a number between 1 and 5.");
+                mySC.nextLine();  // consume the invalid input
+                continue;
+            }
+                    switch (option1Choice) {
                 case 1 -> {   
                     // crear metodo para poder modificar Admin
                     System.out.println("hola");
@@ -112,9 +121,15 @@ import java.util.Scanner;
                     
                    
          while(true){         
-        int option2Choice  = mySC.nextInt();
-         
-        
+          int option2Choice;
+            try {
+                option2Choice = mySC.nextInt();
+            } catch (InputMismatchException e) {
+                // input is not an integer, display error message and continue
+                System.out.println("Invalid input, please enter a number between 1 and 4.");
+                mySC.nextLine();  // consume the invalid input
+                continue;
+            }
         switch (option2Choice) {
           case 1 -> {   
             // crear metodo para poder modificar Credenciales del user
