@@ -61,4 +61,21 @@ public class adminTools {
         //Close the connection
         conn.close();
     }
+    
+    public void deleteValuesFromTable(int id) throws SQLException{
+        //Establish a connection to the database
+        Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+        
+        //Create a Statement object
+        Statement stmt = conn.createStatement();
+        
+        //Execute a DELETE statement
+        String sql = "DELETE FROM logins WHERE ID = " + id;
+        id = stmt.executeUpdate(sql);
+        System.out.println(id + " row deleted");
+        
+        //Close the connection
+        conn.close();
+          
+    }
 }
