@@ -72,7 +72,11 @@ public class adminTools {
         //Execute a DELETE statement
         String sql = "DELETE FROM logins WHERE ID = " + id;
         id = stmt.executeUpdate(sql);
-        System.out.println(id + " row deleted");
+        if(id == 0){
+            System.out.println("No rows deleted. Exiting DELETE function.");
+        }else if (id != 0) {
+            System.out.println(id + " row deleted");
+        }
         
         //Close the connection
         conn.close();
