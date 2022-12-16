@@ -13,7 +13,7 @@ public class LoginSystem {
     // Set up the connection to the mySQL database
     String url = "jdbc:mysql://localhost:3306/MatricesUsers";
     String user = "root";
-    String password = "root1234";
+    String password = "root";
     Connection conn = null;
     
     public void LoginSystem() throws SQLException {

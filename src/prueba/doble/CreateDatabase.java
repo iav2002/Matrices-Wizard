@@ -21,7 +21,7 @@ public class CreateDatabase  {
     
     //Database credentials
     static final String USER = "root";
-    static final String PASS = "root1234";
+    static final String PASS = "root";
     
     public boolean CreateDatabase(){
         
