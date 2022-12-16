@@ -33,7 +33,7 @@ import java.util.Scanner;
        System.out.println("///////////////////////");
        System.out.println("Welcome to MatricesWizard!");
        System.out.println("Press 1 to Login");
-       System.out.println("Press 2 to Sing Up");
+       System.out.println("Press 2 to Sign Up");
        System.out.println("Press 3 to Exit");
        System.out.println("///////////////////////");    
 
@@ -51,12 +51,12 @@ import java.util.Scanner;
              String sInput;
             
              System.out.print("Please introduce your username:");             
-             aInput = mySC.next();
+             fInput = mySC.next();
                 
-              System.out.print("Introduce your password:");          
-              bInput = mySC.next();
-              myL.getPasswordForLogin(fInput,sInput);
-               myL.getPasswordForLogin(aInput,bInput);
+             System.out.print("Introduce your password:");          
+             sInput = mySC.next();
+             myL.getPasswordForLogin(fInput,sInput);
+   
             String role = myL.getRoleForLogin(fInput, sInput); //chequea que role tiene el usuario que acaba de logearse
       
          if (role.equals("admin")) {
