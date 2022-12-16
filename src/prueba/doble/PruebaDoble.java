@@ -96,7 +96,8 @@ import static prueba.doble.mathSystem.inverse;
                     adminTools myTools = new adminTools();
                     myTools.updateValues(adminNewName, adminNewPass);
                     System.out.println("Modification applied successfully");
-                    System.out.println("press 5 to go back to the previous menu"); 
+                    System.out.println("press 5 to go back to the previous menu");
+                            
                     break; //exit this funciton
                 }
                 case 2 -> {
