@@ -35,8 +35,8 @@ import static prueba.doble.mathSystem.inverse;
        //creating tables for math
        MathTables myMT = new MathTables();
        myMT.createOperationsTable();
-//       myMT.createEquationsTable();
-//       myMT.createVarTable();
+       myMT.createEquationsTable();
+       myMT.createVarTable();
           
        
    while (true) {
