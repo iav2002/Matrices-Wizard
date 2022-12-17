@@ -104,7 +104,7 @@ public class LoginSystem {
     // VIEJO CODIGO PARA VERIFICACION DE USUARIO Y CONTRASENA, MEJORADO 
     
         //     public String getPasswordForLogin(String login, String password) throws SQLException {
-        //        String verifySql = "SELECT password FROM logins WHERE login = '" + login + "' AND password = '" + password + "'";
+  //        String verifySql = "SELECT password FROM logins WHERE login = '" + login + "' AND password = '" + password + "'";
         //        Statement stmt = conn.createStatement();
         //        ResultSet rs = stmt.executeQuery(verifySql);
         //        if (rs.next()) {

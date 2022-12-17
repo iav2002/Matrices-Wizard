@@ -8,12 +8,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+import java.sql.*;
 /**
  *
  * @author ignacioalarconvarela
  */
-public class usertools {
+public class userTools {
     
       //JDBC driver name and datbase URL
     // static final String JDBC_DRIVER = "jdbc:mysql://localhost:3306/?user=root";
@@ -23,30 +23,83 @@ public class usertools {
     static final String USER = "root";
     static final String PASS = "root1234";
     
-    public void updateValues(String login, String password) throws SQLException{
-        
-        Connection conn = null;
-        Statement stmt = null;
-        try{
-            //Open a connection
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
-           
-        //Create a statement object
-        Statement statement = conn.createStatement();
-        
-        //Use the statement object to execute an UPDATE query
-        String sql = "UPDATE logins SET login = '" + login + "', password = '" + password + "' WHERE id = '" + 1 + "'";
-        statement.executeUpdate(sql);
-        
-        //close the statement and connection objects
-        statement.close();
+    public void updateValues(String login, String password) throws SQLException {
+    Connection conn = null;
+    PreparedStatement stmt = null;
+    try {
+        // Open a connection
+        conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+        // Create a prepared statement to select the id of the row to update
+        String sql = "SELECT id FROM logins WHERE login = ? AND password = ?";
+        stmt = conn.prepareStatement(sql);
+
+        // Set the values for the prepared statement's placeholders
+        stmt.setString(1, login);
+        stmt.setString(2, password);
+
+        // Execute the query to select the id
+        ResultSet rs = stmt.executeQuery();
+
+        // If the query returns a result, update the row
+        if (rs.next()) {
+            int id = rs.getInt("id");
+
+            // Create a new prepared statement to update the password
+            sql = "UPDATE logins SET password = ? WHERE login = ? AND id = ?";
+            stmt = conn.prepareStatement(sql);
+
+            // Set the values for the prepared statement's placeholders
+            stmt.setString(1, password);
+            stmt.setString(2, login);
+            stmt.setInt(3, id);
+
+            // Execute the update
+            stmt.executeUpdate();
+        }
+
+        // Close the result set, prepared statement, and connection objects
+        rs.close();
+        stmt.close();
         conn.close();
-        
-    }catch(SQLException se){
-            //Handle errors for JDBC
-            se.printStackTrace();
+
+    } catch (SQLException se) {
+        // Handle errors for JDBC
+        se.printStackTrace();
     }
-    }  
+}
+  
     
+    
+    
+//    MEJOR PRACTICE SEGUN CHATGPT funciona igual
+//    public void updateValues(String login, String password) throws SQLException {
+//    Connection conn = null;
+//    PreparedStatement stmt = null;
+//    try {
+//        // Open a connection
+//        conn = DriverManager.getConnection(DB_URL, USER, PASS);
+//
+//        // Create a prepared statement
+//        String sql = "UPDATE logins SET password = ? WHERE login = ?";
+//        stmt = conn.prepareStatement(sql);
+//
+//        // Set the values for the prepared statement's placeholders
+//        stmt.setString(1, password);
+//        stmt.setString(2, login);
+//
+//        // Execute the update
+//        stmt.executeUpdate();
+//
+//        // Close the prepared statement and connection objects
+//        stmt.close();
+//        conn.close();
+//
+//    } catch (SQLException se) {
+//        // Handle errors for JDBC
+//        se.printStackTrace();
+//    }
+//}
+
     
 }
