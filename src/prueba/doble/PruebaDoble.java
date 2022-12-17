@@ -19,11 +19,11 @@ import static prueba.doble.mathSystem.inverse;
 //ahisbciabcui
 // ya funciono perrita 
 //BERNARDOOO CONECTATEEEEEEEEEEE PUTOO
-  public class PruebaDoble {
+    public class PruebaDoble {
     /**
      * @param args the command line arguments
      */
-  public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws SQLException {
         
         //WELCOMING PROCESS
        CreateDatabase myDb = new CreateDatabase();
@@ -31,6 +31,12 @@ import static prueba.doble.mathSystem.inverse;
        LoginSystem myL = new LoginSystem();
        myL.LoginSystem();
        Scanner mySC = new Scanner (System.in);
+       
+       //creating tables for math
+       MathTables myMT = new MathTables();
+       myMT.createOperationsTable();
+//       myMT.createEquationsTable();
+//       myMT.createVarTable();
           
        
    while (true) {
@@ -96,14 +102,30 @@ import static prueba.doble.mathSystem.inverse;
                     adminTools myTools = new adminTools();
                     myTools.updateValues(adminNewName, adminNewPass);
                     System.out.println("Modification applied successfully");
-                    System.out.println("press 5 to go back to the previous menu"); 
+                    System.out.println("press 5 to go back to the previous menu");
+                            
                     break; //exit this funciton
                 }
                 case 2 -> {
                     //crear metodo para ver los usuarios sign upeados (llamar desde login system)
+                    adminTools otherTool = new adminTools();
+                    otherTool.retrieveValuesFromTable("logins");
+                    System.out.println("press 5 to go back to the previous menu");
+                    break;
                 }
                 case 3 -> {
                     //poder eliminar usuarios 
+                    System.out.println("What user would you like to delete? Choose by using the id. Enter 0 to cancel");
+                    adminTools otherTool = new adminTools();
+                    int rowSelected = 0;
+                    do{
+                        otherTool.retrieveValuesFromTable("logins"); 
+                        Scanner nSc = new Scanner(System.in);
+                        rowSelected = nSc.nextInt();
+                    otherTool.deleteValuesFromTable(rowSelected);
+                    }while(rowSelected != 0);
+                    //otherTool.retrieveValuesFromTable("logins");
+                    System.out.println("press 5 to go back to the previous menu");
                 }
                 case 4 -> {
                     //ver operaciones hechas por un usuario
@@ -301,16 +323,6 @@ import static prueba.doble.mathSystem.inverse;
          }
 
        }//del primer while    
-     
-  
-  
   }//llave del metodo main 
   }// corchete de la clase
-          
-
- 
-          
-
-   
-    
 
