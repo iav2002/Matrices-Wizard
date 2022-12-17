@@ -68,7 +68,7 @@ public class CreateDatabase  {
             
         }//end try
         
-        System.out.println("Goodbye!");
+        System.out.println("DataBase was already created, don't worry we made the connection.");
 
         return true;
         

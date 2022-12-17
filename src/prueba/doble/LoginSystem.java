@@ -37,7 +37,7 @@ public class LoginSystem {
         stmt.executeUpdate(createTableSql);
         stmt.executeUpdate(insertRowSql);
            } catch (SQLException e) {
-        System.out.println("Unable to create the logins table or insert a row.");
+        System.out.println("Table was already created, don't worry we made the connection.");
         return;
         }
     }
