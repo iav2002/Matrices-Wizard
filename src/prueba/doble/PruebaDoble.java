@@ -31,6 +31,12 @@ import static prueba.doble.mathSystem.inverse;
        LoginSystem myL = new LoginSystem();
        myL.LoginSystem();
        Scanner mySC = new Scanner (System.in);
+       
+       //creating tables for math
+       MathTables myMT = new MathTables();
+       myMT.createOperationsTable();
+//       myMT.createEquationsTable();
+//       myMT.createVarTable();
           
        
    while (true) {
