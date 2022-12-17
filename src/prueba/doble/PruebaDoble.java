@@ -179,7 +179,7 @@ import static prueba.doble.mathSystem.inverse;
                     System.out.println("Introduce your new password:");
                     String userNewPass;
                     userNewPass = aSc.nextLine();
-                    userTools myTools = new userTools();
+                    usertools myTools = new usertools();
                     myTools.updateValues(userNewName, userNewPass);
                     System.out.println("Modification applied successfully");
                     System.out.println("press 4 to go back to the previous menu"); 

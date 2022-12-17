@@ -13,7 +13,7 @@ import java.sql.*;
  *
  * @author ignacioalarconvarela
  */
-public class userTools {
+public class usertools {
     
       //JDBC driver name and datbase URL
     // static final String JDBC_DRIVER = "jdbc:mysql://localhost:3306/?user=root";
