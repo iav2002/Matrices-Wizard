@@ -32,11 +32,9 @@ public class MathTables {
         Statement stmt = conn.createStatement();
         // Create the table to store operation_id(PK), user_id(FK) and var_id(FK)
         
-        String createTableSQL = "CREATE TABLE operations (operation_id INTEGER PRIMARY KEY AUTO_INCREMENT, id INTEGER NOT NULL,FOREIGN KEY (id) REFERENCES logins(id))";
-                //"var_id INTEGER NOT NULL," +
-                //"FOREIGN KEY (var_id) REFERENCES variables(var_id)" +
+        String createTableSQL = "CREATE TABLE operations (operation_id INTEGER PRIMARY KEY AUTO_INCREMENT, id INTEGER NOT NULL, size INTEGER, FOREIGN KEY (id) REFERENCES logins(id))";
 
-            stmt.executeUpdate(createTableSQL);
+        stmt.executeUpdate(createTableSQL);
             
         //Close the resources
         stmt.close();
@@ -54,12 +52,7 @@ public class MathTables {
         //Create a Statement
         Statement stmt = conn.createStatement();
         // Create the table Variables to store operation_id(PK), user_id(FK) and var_id(FK)
-        String createTableSQL = "CREATE TABLE equations (eq_id INTEGER PRIMARY KEY AUTO_INCREMENT,operation_id INTEGER,constant INTEGER, FOREIGN KEY (operation_id) REFERENCES operations(operation_id))";
-//                "eq_id INTENGER PRIMARY KEY AUTO_INCREMENT,"
-//                + "operation_id INTEGER,"
-//                + "constant INTEGER"
-//                + "FOREIGN KEY (operation_id) REFERENCES operations(operation_id),"
-//                + ")";
+        String createTableSQL = "CREATE TABLE equations (eq_id INTEGER PRIMARY KEY AUTO_INCREMENT,operation_id INTEGER, var_amount INTEGER, constant INTEGER, FOREIGN KEY (operation_id) REFERENCES operations(operation_id))";
         stmt.executeUpdate(createTableSQL);
         
         //close the resources
@@ -67,7 +60,7 @@ public class MathTables {
         conn.close();
        
     }
-//    
+    
     public void createVarTable() throws SQLException{
         try {
             conn = DriverManager.getConnection(url, user, password);
@@ -78,14 +71,7 @@ public class MathTables {
         
         //Create a Statement
         Statement stmt = conn.createStatement();
-        String sql = "CREATE TABLE variables (var_id INTEGER PRIMARY KEY AUTO_INCREMENT, eq_id INTEGER, co_factor INTEGER, var_char VARCHAR(1), var_value INTEGER, FOREIGN KEY (eq_id) REFERENCES equations(eq_id))"; 
-//                "var_id INTENGER PRIMARY KEY AUTO_INCREMENT,"
-//                + "eq_id INTEGER,"
-//                + "co-factor INTEGER,"
-//                + "var_char VARCHAR(1),"
-//                + "var_value INTEGER,"
-//                + "FOREIGN KEY (eq_id) REFERENCES equations(eq_id),"
-//                + ")";
+        String sql = "CREATE TABLE variables (var_id INTEGER PRIMARY KEY AUTO_INCREMENT, eq_id INTEGER, var_name VARCHAR(1), cofactor INTEGER, var_value INTEGER, FOREIGN KEY (eq_id) REFERENCES equations(eq_id))"; 
         stmt.executeUpdate(sql);
         
         //close the resources
