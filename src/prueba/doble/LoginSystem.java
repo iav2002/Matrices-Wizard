@@ -25,10 +25,7 @@ public class LoginSystem {
         }
         
         // Create the table to store login and password information
-        
-        //ID AUTO INCREMENTATIVO
-        //ROL, ADMIN O USER 
-        //INSERTAR ADMIN
+     
     String createTableSql = "CREATE TABLE logins (id INTEGER PRIMARY KEY AUTO_INCREMENT, login VARCHAR(20), password VARCHAR(20), role VARCHAR(10) DEFAULT 'user')";
     String insertRowSql = "INSERT INTO logins (login, password, role) VALUES ('CCT', 'Dublin', 'admin')";
 

@@ -10,7 +10,7 @@ import static prueba.doble.mathSystem.N;
 import static prueba.doble.mathSystem.determinant;
 import static prueba.doble.mathSystem.display;
 import static prueba.doble.mathSystem.inverse;
-
+import java.sql.*;
 
 /**
  *
@@ -34,7 +34,7 @@ import static prueba.doble.mathSystem.inverse;
        
        //creating tables for math
        MathTables myMT = new MathTables();
-       myMT.createOperationsTable();
+        myMT.equationsTable();
 //       myMT.createEquationsTable();
 //       myMT.createVarTable();
           
@@ -189,24 +189,24 @@ import static prueba.doble.mathSystem.inverse;
          
           case 2->{
               //Math
-              
+           
               int i, j , n, b;
                 String literales = "";
                 char literal;
-                //input de todo
+                //User main input
                 Scanner in = new Scanner(System.in);
-                //define longitud de ecuacion, para los metodos y matriz 
+                //Lenght of matrix and for methods
                 n = N;
-                //matriz para guardar la inversa
+                //Array to store the inverse
                 float [][]inv = new float[n][n];
-                //matriz para guardar las constantes
+                //Array to store the constants of the ecuations
                 int [][]conts = new int[n][1];
-                //matriz para guardar los coeficientes de las variables
+                //Array to store the coeficients of the ecuations 
                 int[][] matriz = new int[n][n];
 
             for(i=0; i<n; i++)
                 {
-                    //saca las letras de las variables 
+                    //gets the letters for the ecuations from the user 
                     System.out.print("Type the letter of the first variable " + (i+1) + ": ");
                     do {
                         literal = in.nextLine().toLowerCase().charAt(0);
@@ -218,25 +218,25 @@ import static prueba.doble.mathSystem.inverse;
                 {
                     for(j=0; j<n; j++)
                     {
-                         //Saca los coeficientes y los guarda en matriz
+                         //gets the coeficients and store them in array matriz
                         System.out.print("The  coeficient '" + literales.charAt(j) + "' of the ecuation " + (i+1) + ": ");
                         matriz[i][j] = Integer.parseInt(in.nextLine());
                     }
-                     //Saca las constantes y las guarda en conts
+                     //gets the constants and store them in array conts
                     System.out.print("The constant of the ecuation " + (i+1) + ": ");
                     conts[i][0] = Integer.parseInt(in.nextLine());
                 }
         
-                //saca la determinante, pero es lo podemos borrar, sirve sin esto 
+                //takes the determinant
                 System.out.println("Determinant of the matrix is : " + determinant(matriz, n));
 
 
-                //chequear si la matriz tiene inversa, si no tiene bota error de no tener inversa y acaba en 0 NO ERROR
+                //checks if the matriz has and inverse, if not the ecuation cant be performed 
                 if (inverse(matriz, inv));
                 display(inv);
         
-                //una vez que vemos que HAY inversa, esta parte hace la multiplicacion de INVERSA * CONSTANTES 
-                // inv * conts = resultado
+                //if there is an inverse its multiplied by the conts and is the result
+                // INV * CONTS = RESULT
                 float result[][] = new float [n][1];
                 for ( i = 0; i < n; i++) 
                 {
@@ -249,7 +249,7 @@ import static prueba.doble.mathSystem.inverse;
                     }
                 }
 
-                //imprime en orden lo que el usuario puso pero no pude poner la x y, creo que no se puede tipo que se vea bien
+                //Print the system of ecuations with out the letters
                 System.out.println("Thats how your linear ecuation looks without the variables loquita");
                  for( i=0; i<n; i++)
                 {
@@ -261,7 +261,7 @@ import static prueba.doble.mathSystem.inverse;
                     System.out.println();
                 }
 
-             //Se imprime las soluciones del sistema de ecuaciones
+             //print the solution of the system
                 System.out.println("The product is:");
                 for( b=0; b<n; b++)
                 {   
@@ -269,9 +269,18 @@ import static prueba.doble.mathSystem.inverse;
                     // y = solucion (no importa si es 2x2 3x3 4x4 5x5 
                     // z = solucion
                     System.out.println(literales.charAt(b) + " = " + result[b][0] + " ");
-
+                    String solucion = (literales.charAt(b) + " = " + result[b][0] + " ");
+                    String hola = "hola"; 
+                    int l = 3;
+                    myMT.insertEquation(l, hola, solucion);
                 }
-                         
+                
+           
+                
+                
+    
+
+                
               
           }//close case 2
          

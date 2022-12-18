@@ -20,77 +20,50 @@ public class MathTables {
     String password = "root1234";
     Connection conn = null;
     
-    public void createOperationsTable() throws SQLException {
+   public void equationsTable() throws SQLException {
         try {
-            conn = DriverManager.getConnection(url, user, password);
+          conn = DriverManager.getConnection(url, user, password);
         } catch (SQLException e) {
-            System.out.println("Unable to connect to the database.");
-            return;
+          System.out.println("Unable to connect to the database.");
+          return;
         }
-        
-        //Create a Statement
-        
-        // Create the table to store operation_id(PK), user_id(FK) and var_id(FK)
-        
-        String createTableSQL = "CREATE TABLE operations (operation_id INTEGER PRIMARY KEY AUTO_INCREMENT, id INTEGER NOT NULL,FOREIGN KEY (id) REFERENCES logins(id))";
-          
-  
-     //PARA QUE NO CRASHEE Y TENGAMOS QUE BORRAR A CADA RATO MYSQL
-         Statement stmt = conn.createStatement();
-          try {
-        stmt.executeUpdate(createTableSQL);
-        
-           } catch (SQLException e) {
-        System.out.println("Table was already created, don't worry we made the connection.");
-        return;
-        }
+
+    String createTableSQL = "CREATE TABLE equations (equation_id INT AUTO_INCREMENT PRIMARY KEY, user_id INT NOT NULL, FOREIGN KEY (user_id) REFERENCES logins(id), equation VARCHAR(255) NOT NULL, solution VARCHAR(255) NOT NULL)";
+
+        // Create a Statement
+        Statement stmt = conn.createStatement();
+        try {
+          stmt.executeUpdate(createTableSQL);
+        } catch (SQLException e) {
+          System.out.println("Table was already created, don't worry we made the connection.");
+          return;
+  }
+ }
+ public void insertEquation(int userId, String equation, String solution) throws SQLException {
+  // Insert a new equation and its solution into the "equations" table
+        PreparedStatement pstmt = conn.prepareStatement(
+          "INSERT INTO equations (user_id, equation, solution) VALUES (?, ?, ?)");
+        pstmt.setInt(1, userId);
+        pstmt.setString(2, equation);
+        pstmt.setString(3, solution);
+        pstmt.executeUpdate();
       }
-    
+
+}
+   
+
+//   String insertSql = "INSERT INTO matrix_table (literal, coefficient, constant) VALUES (?, ?, ?)";
+//                
+//                PreparedStatement pstmt = conn.prepareStatement(insertSql);
+//
+//                for ( i = 0; i < n; i++) {
+//                    for ( j = 0; j < n; j++) {
+//                        pstmt.setString(1, String.valueOf(literales.charAt(j)));
+//                        pstmt.setInt(2, matriz[i][j]);
+//                        pstmt.setInt(3, conts[i][0]);
+//                        pstmt.executeUpdate();
  
     
-    public void createEquationsTable() throws SQLException{
-        try {
-            conn = DriverManager.getConnection(url, user, password);
-        } catch (SQLException e) {
-            System.out.println("Unable to connect to the database.");
-            return;
-        }
-        
-        //Create a Statement
-        Statement stmt = conn.createStatement();
-        // Create the table Variables to store operation_id(PK), user_id(FK) and var_id(FK)
-        String createTableSQL = "CREATE TABLE equations (eq_id INTEGER PRIMARY KEY AUTO_INCREMENT,operation_id INTEGER, var_amount INTEGER, constant INTEGER, FOREIGN KEY (operation_id) REFERENCES operations(operation_id))";
-        
-         try {
-        stmt.executeUpdate(createTableSQL);
-        
-           } catch (SQLException e) {
-        System.out.println("Table was already created, don't worry we made the connection.");
-        return;
-        }
-      
-    }
-    
-    public void createVarTable() throws SQLException{
-        try {
-            conn = DriverManager.getConnection(url, user, password);
-        } catch (SQLException e) {
-            System.out.println("Unable to connect to the database.");
-            return;
-        }
-        
-        //Create a Statement
-        Statement stmt = conn.createStatement();
-        String createTableSQL = "CREATE TABLE variables (var_id INTEGER PRIMARY KEY AUTO_INCREMENT, eq_id INTEGER, var_name VARCHAR(1), cofactor INTEGER, var_value INTEGER, FOREIGN KEY (eq_id) REFERENCES equations(eq_id))"; 
-       try {
-        stmt.executeUpdate(createTableSQL);
-        
-           } catch (SQLException e) {
-        System.out.println("Table was already created, don't worry we made the connection.");
-        return;
-        }
-      }
-    }
 
     
 
