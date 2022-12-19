@@ -13,20 +13,9 @@ import java.util.Scanner;
 public class mathSystem2x2 {
     
     
-  static int N = userInput();
+  static int N = 2;
    
-   static int userInput() {
-
-        Scanner myKb = new Scanner(System.in);
-        // if salse will go to the catch
-        int userInput; // so the program can compared with the user input
-        
-            System.out.print("Type 2 to solve an ecuation 2x2:");
-            userInput = Integer.parseInt(myKb.nextLine());  // Validation for the input to be as requested in the "prompt"
-                
-        return (userInput);  
-      
-    }
+   
     static void getCofactor(int matriz[][], int temp[][],
                             int p, int q, int n)
     {

@@ -11,20 +11,9 @@ import java.util.Scanner;
  * @author ignacioalarconvarela
  */
 public class mathSystem3x3 {
-    static int E = userInput();
+    static int E = 3;
    
-   static int userInput() {
-
-        Scanner myKb = new Scanner(System.in);
-        // if salse will go to the catch
-        int userInput; // so the program can compared with the user input
-        
-            System.out.print("Type 3 to solve an ecuation 3x3: ");
-            userInput = Integer.parseInt(myKb.nextLine());  // Validation for the input to be as requested in the "prompt"
-                
-        return (userInput);  
-      
-    }
+   
     static void getCofactor(int matriz[][], int temp[][],
                             int p, int q, int n)
     {
