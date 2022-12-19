@@ -7,6 +7,8 @@ package prueba.doble;
 
 import java.sql.Connection;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -49,8 +51,36 @@ public class MathTables {
         pstmt.executeUpdate();
       }
 
-}
+
    
+    public static String getEquations(Scanner sc, int n) {
+        StringBuilder sb = new StringBuilder();
+        for (int k = 1; k <= n; k++) {
+            System.out.println("In order to save the equation it is needed you to write the equations. Please write the equation: " + k);
+            String userEquation = sc.nextLine();
+            System.out.println("Your equation " + k + ": " + userEquation + " is saved.");
+            sb.append(userEquation).append("\n");
+        }
+        return sb.toString();
+    }
+
+   }
+
+
+
+   
+//System.out.println("In order to save the equation it is needed you to write the equations. Please write the equation: " + 1);
+//            String userEquation = sc.nextLine();
+//            System.out.println("Your equation " + 1 + ": " + userEquation + " is saved.");
+//            sb.append(userEquation).append("\n");
+//            
+//             System.out.println("In order to save the equation it is needed you to write the equations. Please write the equation: " + 2);
+//            String userEquation2 = sc.nextLine();
+//            System.out.println("Your equation " + 2 + ": " + userEquation2 + " is saved.");
+//            sb.append(userEquation2).append("\n");
+//        return sb.toString();
+// 
+
 
 //   String insertSql = "INSERT INTO matrix_table (literal, coefficient, constant) VALUES (?, ?, ?)";
 //                

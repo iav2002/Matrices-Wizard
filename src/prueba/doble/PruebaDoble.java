@@ -11,6 +11,7 @@ import static prueba.doble.mathSystem3x3.determinant3;
 import static prueba.doble.mathSystem3x3.display3;
 import static prueba.doble.mathSystem3x3.inverse3;
 import java.sql.*;
+import java.util.List;
 import static prueba.doble.mathSystem2x2.N;
 import static prueba.doble.mathSystem2x2.determinant;
 import static prueba.doble.mathSystem2x2.display;
@@ -39,6 +40,8 @@ import static prueba.doble.mathSystem2x2.inverse;
        //creating tables for math
        MathTables myMT = new MathTables();
         myMT.equationsTable();
+        
+
 //       myMT.createEquationsTable();
 //       myMT.createVarTable();
           
@@ -241,47 +244,42 @@ import static prueba.doble.mathSystem2x2.inverse;
                                         }
                                     } while(literal == ' ');
                                     literales += literal;
-                                }          
-                              
-                            
-                              
-                              
-                              
-       for(i=0; i<n; i++)
-    {
-        for(j=0; j<n; j++)
-        {
-            while(true)
-            {
-                try
-                {
-                    System.out.print("The  coeficient '" + literales.charAt(j) + "' of the ecuation " + (i+1) + ": ");
-                    String input = in.nextLine();
-                    matriz[i][j] = Integer.parseInt(input);
-                    break; // input was valid, so exit the loop
-                }
-                catch(NumberFormatException e)
-                {
-                    System.out.println("Invalid input. Please enter a number.");
-                }
-            }
-        }
+                                }                               
+                                    for(i=0; i<n; i++)
+                                 {
+                                     for(j=0; j<n; j++)
+                                     {
+                                         while(true)
+                                         {
+                                             try
+                                             {
+                                                 System.out.print("The  coeficient '" + literales.charAt(j) + "' of the ecuation " + (i+1) + ": ");
+                                                 String input = in.nextLine();
+                                                 matriz[i][j] = Integer.parseInt(input);
+                                                 break; // input was valid, so exit the loop
+                                             }
+                                             catch(NumberFormatException e)
+                                             {
+                                                 System.out.println("Invalid input. Please enter a number.");
+                                             }
+                                         }
+                                     }
 
-        while(true)
-        {
-            try
-            {
-                System.out.print("The constant of the ecuation " + (i+1) + ": ");
-                String input = in.nextLine();
-                conts[i][0] = Integer.parseInt(input);
-                break; // input was valid, so exit the loop
-            }
-            catch(NumberFormatException e)
-            {
-                System.out.println("Invalid input. Please enter a number.");
-            }
-        }
-    }          //takes the determinant
+                                     while(true)
+                                     {
+                                         try
+                                         {
+                                             System.out.print("The constant of the ecuation " + (i+1) + ": ");
+                                             String input = in.nextLine();
+                                             conts[i][0] = Integer.parseInt(input);
+                                             break; // input was valid, so exit the loop
+                                         }
+                                         catch(NumberFormatException e)
+                                         {
+                                             System.out.println("Invalid input. Please enter a number.");
+                                         }
+                                     }
+                                 }          //takes the determinant
                               
                          System.out.println("Determinant of the matrix is : " + determinant(matriz, n));
                               //checks if the matriz has and inverse, if not the ecuation cant be performed
@@ -310,18 +308,21 @@ import static prueba.doble.mathSystem2x2.inverse;
                                   System.out.print("  =  "+ conts[i][0]);
                                   System.out.println();
                               }             //print the solution of the system
-                              System.out.println("The product is:");
-                              for( b=0; b<n; b++)
+                             System.out.println("Copy the system presented above but ith letters please!!");
+                              String equations = MathTables.getEquations(in, n);
+                             System.out.println("The product is:");
+                              
+                               for( b=0; b<n; b++)
                               {
                                   // x =  solucion
                                   // y = solucion (no importa si es 2x2 3x3 4x4 5x5
                                   // z = solucion
-                                  System.out.println(literales.charAt(b) + " = " + result[b][0] + " ");
+                               
                                   String solucion = (literales.charAt(b) + " = " + result[b][0] + " ");
-                                  String hola = "2";
-                                  myMT.insertEquation(userId, hola, solucion);
-                              
                                   
+                                  myMT.insertEquation(userId, equations , solucion);
+                                   System.out.println(literales.charAt(b) + " = " + result[b][0] + " ");
+                             
                               }   
                         break;
                       }
@@ -341,7 +342,7 @@ import static prueba.doble.mathSystem2x2.inverse;
                               //Array to store the coeficients of the ecuations
                               int[][] matriz = new int[n][n];
                               
-                       for(i=0; i<n; i++)
+                   for(i=0; i<n; i++)
                         {
                             char literal = ' ';
                             do
@@ -361,11 +362,11 @@ import static prueba.doble.mathSystem2x2.inverse;
                         }           
                               
                               
-                    for(i=0; i<n; i++)
+                 for(i=0; i<n; i++)
                         {
                         for(j=0; j<n; j++)
                         {
-                            while(true)
+                        while(true)
                             {
                                 try
                                 {
@@ -381,7 +382,7 @@ import static prueba.doble.mathSystem2x2.inverse;
                             }
                         }
 
-                        while(true)
+                    while(true)
                         {
                             try
                             {
@@ -429,7 +430,9 @@ import static prueba.doble.mathSystem2x2.inverse;
                                   System.out.print("  =  "+ conts[i][0]);
                                   System.out.println();
                               }             //print the solution of the system
-                              
+                              System.out.println("Copy the system presented above but ith letters please!!");
+                              String equations = MathTables.getEquations(in, n);
+                             
                               System.out.println("The product is:");
                               for( b=0; b<n; b++)
                               {
@@ -439,7 +442,7 @@ import static prueba.doble.mathSystem2x2.inverse;
                                   System.out.println(literales.charAt(b) + " = " + result[b][0] + " ");
                                   String solucion = (literales.charAt(b) + " = " + result[b][0] + " ");
                                   String hola = "3";
-                                  myMT.insertEquation(userId, hola, solucion);
+                                  myMT.insertEquation(userId, equations, solucion);
                               
                                   
                               }       
