@@ -111,7 +111,9 @@ public class mathSystem2x2 {
                 int det = determinant(matriz, N);
                 if (det == 0)
                 {
-                        System.out.print("Singular matrix, can't find its inverse");
+                    System.out.println("///////////////////////////////////////////////////////////");
+                    System.out.println("Is not possible to find its inverse in this matrix, therefore there is not solution for this System of equations");
+                    System.out.println("///////////////////////////////////////////////////////////");
                         return false;
                 }
 

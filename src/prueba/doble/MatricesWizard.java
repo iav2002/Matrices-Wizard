@@ -308,7 +308,8 @@ import static prueba.doble.mathSystem2x2.inverse;
                                      }
                                  }   
                           //takes the determinant, just as a plus. If there is not determinant of course there are no solutions for our system of equations      
-                         System.out.println("Determinant of the matrix is : " + determinant(matriz, n));
+                          System.out.println("//////////////////");
+                          System.out.println("Determinant of the matrix is : " + determinant(matriz, n));
                               //checks if the matriz has and inverse, if not the ecuation cant be performed
                              //In case the inverse doesn't exist will display a helpful message.
                               if (inverse(matriz, inv));
@@ -326,8 +327,9 @@ import static prueba.doble.mathSystem2x2.inverse;
                                       }
                                   }
                               }   
-                                //Print the system of ecuations with out the letters
-                              System.out.println("Thats how your linear ecuation looks without the variables!");
+                              //Print the system of ecuations with out the letters                            
+                              System.out.println("//////////////////");
+                              System.out.println("Thats how your system of linear equations looks without the variables ");
                               for( i=0; i<n; i++)
                               {
                                   for( j=0; j<n; j++)
@@ -435,7 +437,7 @@ import static prueba.doble.mathSystem2x2.inverse;
                         }
                     }      
                             //takes the determinant, just as a plus. If there is not determinant of course there are no solutions for our system of equations      
-                                                      
+                              System.out.println("//////////////////////");                  
                               System.out.println("Determinant of the matrix is : " + determinant3(matriz, n));
                               System.out.println("");
                               System.out.println("Inverse is:");
@@ -454,8 +456,9 @@ import static prueba.doble.mathSystem2x2.inverse;
                                           result[i][j] = result[i][j] + inv[i][k] * conts[k][j];
                                       }
                                   }
-                              }             //Print the system of ecuations with out the letters
-                              System.out.println("Thats how your linear ecuation looks without the variables loquita");
+                              }  
+                              System.out.println("//////////////////");//Print the system of ecuations with out the letters
+                              System.out.println("Thats how your system of linear equations looks without the variables ");
                               for( i=0; i<n; i++)
                               {
                                   for( j=0; j<n; j++)
@@ -464,7 +467,9 @@ import static prueba.doble.mathSystem2x2.inverse;
                                   }
                                   System.out.print("  =  "+ conts[i][0]);
                                   System.out.println();
-                              }             //print the solution of the system
+                              }  
+                                
+                                //print the solution of the system
                               System.out.println("Copy the system presented above but ith letters please!!");
                               String equations = MathTables.getEquations(in, n);
                              //method to get the ecuations, the parameters is the lenght of the number of equations and also a scanner

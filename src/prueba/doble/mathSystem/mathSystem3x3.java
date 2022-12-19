@@ -110,7 +110,7 @@ public class mathSystem3x3 {
                 if (det == 0)
                 {
                     System.out.println("///////////////////////////////////////////////////////////");
-                    System.out.print("Is not possible to find its inverse in this matrix, therefore there is not solution for this System of equations");
+                    System.out.println("Is not possible to find its inverse in this matrix, therefore there is not solution for this System of equations");
                     System.out.println("///////////////////////////////////////////////////////////");
                    return false;
                 }
