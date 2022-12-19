@@ -4,15 +4,13 @@
  */
 package prueba.doble;
 
-import java.util.Scanner;
-
 /**
  *
  * @author ignacioalarconvarela
  */
 public class mathSystem3x3 {
     static int E = 3;
-   
+   //final lenght of the matrices
    
     static void getCofactor(int matriz[][], int temp[][],
                             int p, int q, int n)
@@ -20,8 +18,8 @@ public class mathSystem3x3 {
        
         int i = 0, j = 0;
  
-        // Looping for each element of
-        // the matrix
+        // Looping for each element of the matrix
+        
         for (int row = 0; row < n; row++)
         {
             for (int col = 0; col < n; col++)
@@ -39,10 +37,9 @@ public class mathSystem3x3 {
         }
     }
  
-    /* Recursive function for finding determinant
-    of matrix. n is current dimension of mat[][]. */
+    // Recursive function for finding determinant of matrix. n is current dimension of matriz[][]
     static int determinant3(int matriz[][], int n)
-    {
+    { 
        
         int D = 0; // Initialize result
  
@@ -60,7 +57,7 @@ public class mathSystem3x3 {
         // Iterate for each element of first row
         for (int f = 0; f < n; f++)
         {
-            // Getting Cofactor of mat[0][f]
+            // Getting Cofactor of matriz[0][f]
             getCofactor(matriz, temp, 0, f, n);
             D += sign * matriz[0][f]
                  * determinant3(temp, n - 1);
@@ -82,7 +79,7 @@ public class mathSystem3x3 {
 		return;
 	}
 
-	// temp is used to store cofactors of A[][]
+	// temp is used to store cofactors of E[][]
 	int sign = 1;
 	int [][]temp = new int[E][E];
 
@@ -90,7 +87,7 @@ public class mathSystem3x3 {
 	{
 		for (int j = 0; j < E; j++)
 		{
-			// Get cofactor of A[i][j]
+			// Get cofactor of E[i][j]
 			getCofactor(matriz, temp, i, j, E);
 
 			// sign of adj[j][i] positive if sum of row
@@ -103,25 +100,26 @@ public class mathSystem3x3 {
 		}
 	}
 }
-//
-// Function to calculate and store inverse, returns false if
-// matrix is singular
+// Function to calculate and store inverse, returns false if matrix is singular
+
         static boolean inverse3(int matriz[][], float [][]inverse)
         {
-                // Find determinant of A[][]
+                // Find determinant of E[][]
 
                 int det = determinant3(matriz, E);
                 if (det == 0)
                 {
-                        System.out.print("Singular matrix, can't find its inverse");
-                        return false;
+                    System.out.println("///////////////////////////////////////////////////////////");
+                    System.out.print("Is not possible to find its inverse in this matrix, therefore there is not solution for this System of equations");
+                    System.out.println("///////////////////////////////////////////////////////////");
+                   return false;
                 }
 
                 // Find adjoint
                 int [][]adj = new int[E][E];
                 adjoint(matriz, adj);
 
-                // Find Inverse using formula "inverse(A) = adj(A)/det(A)"
+                // Find Inverse using formula "inverse(E) = adj(E)/det(E)"
                 for (int i = 0; i < E; i++)
                         for (int j = 0; j < E; j++)
                                 inverse[i][j] = adj[i][j]/(float)det;
@@ -132,16 +130,7 @@ public class mathSystem3x3 {
 
 
 
-           static void Display3(int matriz[][])
-        {
-
-                for (int i = 0; i < E; i++)
-                {
-                        for (int j = 0; j < E; j++)
-                                System.out.print(matriz[i][j]+ " ");
-                        System.out.println();
-                }
-        }
+       //Method to show the inverse
         static void display3(float matriz[][])
         {
 

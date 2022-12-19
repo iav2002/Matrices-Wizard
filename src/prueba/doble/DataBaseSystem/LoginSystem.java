@@ -16,6 +16,7 @@ public class LoginSystem {
     String password = "root1234";
     Connection conn = null;
     
+    //Create main table that will allow the login system
     public void LoginSystem() throws SQLException {
         try {
             conn = DriverManager.getConnection(url, user, password);
@@ -51,7 +52,7 @@ public class LoginSystem {
             return;
         }
     }
-    
+    //Method to get user id using their credentials
     public int getUserId(String login, String password) throws SQLException {
         String selectSql = "SELECT id FROM logins WHERE login = ? AND password = ?";
         PreparedStatement stmt = conn.prepareStatement(selectSql);
@@ -65,6 +66,7 @@ public class LoginSystem {
       }
     }
     
+    //Method to verify credentials of any users, and allow access or let them try again
     public String getPasswordForLogin(String login, String password) throws SQLException {
     String verifySql = "SELECT password FROM logins WHERE login = ? AND password = ?";
     try (PreparedStatement stmt = conn.prepareStatement(verifySql)) {
@@ -89,6 +91,7 @@ public class LoginSystem {
     }
 }
 
+   //Method that will tell us the role of the user and therefore give the user diferent options
     
    public String getRoleForLogin(String login, String password) throws SQLException {
     String verifySql = "SELECT role FROM logins WHERE login = ? AND password = ?";
@@ -107,31 +110,6 @@ public class LoginSystem {
         }
     }
 }
-
-    
-    
-    
-    // VIEJO CODIGO PARA VERIFICACION DE USUARIO Y CONTRASENA, MEJORADO 
-    
-        //     public String getPasswordForLogin(String login, String password) throws SQLException {
-  //        String verifySql = "SELECT password FROM logins WHERE login = '" + login + "' AND password = '" + password + "'";
-        //        Statement stmt = conn.createStatement();
-        //        ResultSet rs = stmt.executeQuery(verifySql);
-        //        if (rs.next()) {
-        //            // Login and password match the ones in the database
-        //            System.out.println("SUCCESS");
-        //            return password;
-        //        } else {
-        //            System.out.println("Incorrect login or password. Please try again.");
-        //            Scanner scanner = new Scanner(System.in);
-        //            System.out.print("Enter Username: ");
-        //            String newLogin = scanner.nextLine();
-        //            System.out.print("Enter password: ");
-        //            String newPassword = scanner.nextLine();
-        //            return getPasswordForLogin(newLogin, newPassword);
-        //        }
-        //}
-
 
 }
 

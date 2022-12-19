@@ -11,7 +11,7 @@ import java.sql.Statement;
 
 /**
  *
- * @author ignacioalarconvarela
+ * @author bernardogandara
  */
 public class CreateDatabase  {
   
@@ -22,7 +22,8 @@ public class CreateDatabase  {
     //Database credentials
     static final String USER = "root";
     static final String PASS = "root1234";
-    
+   
+    //Method that will allow us to create the main data base, and also tell us if there is any issues while doing it
     public boolean CreateDatabase(){
         
         Connection conn = null;
@@ -38,7 +39,7 @@ public class CreateDatabase  {
             stmt.executeUpdate(sql);
             System.out.println("Database created succesfully...");
             
-            //Now on, I will be creating the table of USERS
+            //Now on, I will be using
             stmt.execute("USE MatricesUsers;");
             stmt = conn.createStatement();
                        

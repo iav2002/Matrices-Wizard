@@ -7,8 +7,6 @@ package prueba.doble;
 
 import java.sql.Connection;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -22,6 +20,7 @@ public class MathTables {
     String password = "root1234";
     Connection conn = null;
     
+   //Method that creates our second and last table, where we will store equations and solutions (and ids)
    public void equationsTable() throws SQLException {
         try {
           conn = DriverManager.getConnection(url, user, password);
@@ -41,6 +40,7 @@ public class MathTables {
           return;
   }
  }
+   //Method to store equations along with the solution and user id that is automated
  public void insertEquation(int userId, String equation, String solution) throws SQLException {
   // Insert a new equation and its solution into the "equations" table
         PreparedStatement pstmt = conn.prepareStatement(
@@ -52,7 +52,7 @@ public class MathTables {
       }
 
 
-   
+   //Method that will be used to write in simple form the equations
     public static String getEquations(Scanner sc, int n) {
         StringBuilder sb = new StringBuilder();
         for (int k = 1; k <= n; k++) {
@@ -65,35 +65,6 @@ public class MathTables {
     }
 
    }
-
-
-
-   
-//System.out.println("In order to save the equation it is needed you to write the equations. Please write the equation: " + 1);
-//            String userEquation = sc.nextLine();
-//            System.out.println("Your equation " + 1 + ": " + userEquation + " is saved.");
-//            sb.append(userEquation).append("\n");
-//            
-//             System.out.println("In order to save the equation it is needed you to write the equations. Please write the equation: " + 2);
-//            String userEquation2 = sc.nextLine();
-//            System.out.println("Your equation " + 2 + ": " + userEquation2 + " is saved.");
-//            sb.append(userEquation2).append("\n");
-//        return sb.toString();
-// 
-
-
-//   String insertSql = "INSERT INTO matrix_table (literal, coefficient, constant) VALUES (?, ?, ?)";
-//                
-//                PreparedStatement pstmt = conn.prepareStatement(insertSql);
-//
-//                for ( i = 0; i < n; i++) {
-//                    for ( j = 0; j < n; j++) {
-//                        pstmt.setString(1, String.valueOf(literales.charAt(j)));
-//                        pstmt.setInt(2, matriz[i][j]);
-//                        pstmt.setInt(3, conts[i][0]);
-//                        pstmt.executeUpdate();
- 
-    
 
     
 

@@ -9,14 +9,15 @@ import java.sql.*;
  * @author ignacioalarconvarela
  */
 public class adminTools {
-     //JDBC driver name and datbase URL
-    // static final String JDBC_DRIVER = "jdbc:mysql://localhost:3306/?user=root";
+ 
+   //DB_URL driver name and datbase URL
     static final String DB_URL = "jdbc:mysql://localhost:3306/MatricesUsers";
     
     //Database credentials
     static final String USER = "root";
     static final String PASS = "root1234";
     
+    //Method that will update the values for the Admin
     public void updateValues(String login, String password) throws SQLException{
         
         Connection conn = null;
@@ -39,8 +40,9 @@ public class adminTools {
     }catch(SQLException se){
             //Handle errors for JDBC
             se.printStackTrace();
+        }
     }
-    }
+    //Method that will list all users Signed up 
     public void retrieveValuesFromTable(String tableName) throws SQLException{
         //Establish a connetion to the database
         Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
@@ -61,7 +63,7 @@ public class adminTools {
         //Close the connection
         conn.close();
     }
-    
+     //Method that will allow admin to delete any user Signed up 
     public void deleteValuesFromTable(int id) throws SQLException{
         //Establish a connection to the database
         Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
@@ -82,7 +84,8 @@ public class adminTools {
         conn.close();
           
     }
-public void printEquationsForUser(int userId) throws SQLException {
+    //Method that will list all equation and solution performed by any user
+    public void printEquationsForUser(int userId) throws SQLException {
     // Replace YOUR_DATABASE_URL, YOUR_USERNAME, and YOUR_PASSWORD with the
     // appropriate values for your database
   

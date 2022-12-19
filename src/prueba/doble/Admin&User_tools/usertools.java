@@ -9,9 +9,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.*;
+
 /**
  *
- * @author ignacioalarconvarela
+ * @author bernardogandara
  */
 public class usertools {
     
@@ -23,6 +24,7 @@ public class usertools {
     static final String USER = "root";
     static final String PASS = "root1234";
     
+    //Method that allow user to modify his username and password
     public void updateValues(String login, String password) throws SQLException {
     Connection conn = null;
     PreparedStatement stmt = null;
@@ -69,7 +71,7 @@ public class usertools {
     }
  
     }
-  
+  //Method that will allow users to view his previous equations solved
   public void viewEquations(String login, String password) throws SQLException {
     // Connect to the database
     Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);

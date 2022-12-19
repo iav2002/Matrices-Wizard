@@ -4,8 +4,6 @@
  */
 package prueba.doble;
 
-import java.util.Scanner;
-
 /**
  *
  * @author ignacioalarconvarela
@@ -14,7 +12,7 @@ public class mathSystem2x2 {
     
     
   static int N = 2;
-   
+   //final lenght of the matriz
    
     static void getCofactor(int matriz[][], int temp[][],
                             int p, int q, int n)
@@ -22,8 +20,8 @@ public class mathSystem2x2 {
        
         int i = 0, j = 0;
  
-        // Looping for each element of
-        // the matrix
+        // Looping for each element of the matrix
+       
         for (int row = 0; row < n; row++)
         {
             for (int col = 0; col < n; col++)
@@ -41,8 +39,7 @@ public class mathSystem2x2 {
         }
     }
  
-    /* Recursive function for finding determinant
-    of matrix. n is current dimension of mat[][]. */
+   // Recursive function for finding determinant of matrix. n is current dimension of matriz[][]
     static int determinant(int matriz[][], int n)
     {
        
@@ -62,7 +59,7 @@ public class mathSystem2x2 {
         // Iterate for each element of first row
         for (int f = 0; f < n; f++)
         {
-            // Getting Cofactor of mat[0][f]
+            // Getting Cofactor of matriz[0][f]
             getCofactor(matriz, temp, 0, f, n);
             D += sign * matriz[0][f]
                  * determinant(temp, n - 1);
@@ -84,7 +81,7 @@ public class mathSystem2x2 {
 		return;
 	}
 
-	// temp is used to store cofactors of A[][]
+	// temp is used to store cofactors of N[][]
 	int sign = 1;
 	int [][]temp = new int[N][N];
 
@@ -92,7 +89,7 @@ public class mathSystem2x2 {
 	{
 		for (int j = 0; j < N; j++)
 		{
-			// Get cofactor of A[i][j]
+			// Get cofactor of N[i][j]
 			getCofactor(matriz, temp, i, j, N);
 
 			// sign of adj[j][i] positive if sum of row
@@ -105,12 +102,11 @@ public class mathSystem2x2 {
 		}
 	}
 }
-//
-// Function to calculate and store inverse, returns false if
-// matrix is singular
-        static boolean inverse(int matriz[][], float [][]inverse)
+// Function to calculate and store inverse, returns false if matrix is singular
+        
+    static boolean inverse(int matriz[][], float [][]inverse)
         {
-                // Find determinant of A[][]
+                // Find determinant of N[][]
 
                 int det = determinant(matriz, N);
                 if (det == 0)
@@ -123,7 +119,7 @@ public class mathSystem2x2 {
                 int [][]adj = new int[N][N];
                 adjoint(matriz, adj);
 
-                // Find Inverse using formula "inverse(A) = adj(A)/det(A)"
+                // Find Inverse using formula "inverse(N) = adj(N)/det(N)"
                 for (int i = 0; i < N; i++)
                         for (int j = 0; j < N; j++)
                                 inverse[i][j] = adj[i][j]/(float)det;
@@ -131,19 +127,7 @@ public class mathSystem2x2 {
                 return true;
         }
 
-
-
-
-           static void Display(int matriz[][])
-        {
-
-                for (int i = 0; i < N; i++)
-                {
-                        for (int j = 0; j < N; j++)
-                                System.out.print(matriz[i][j]+ " ");
-                        System.out.println();
-                }
-        }
+         //Method to show the inverse
         static void display(float matriz[][])
         {
 
