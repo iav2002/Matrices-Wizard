@@ -17,12 +17,12 @@ import static prueba.doble.mathSystem2x2.inverse;
 
 /**
  *
- * @author ignac
+ * @author 
+ * Ignacio Alarcon 2021357
+ * Bernardo Gandara 2021283
  */
-//ahisbciabcui
-// ya funciono perrita 
-//BERNARDOOO CONECTATEEEEEEEEEEE PUTOO
-    public class PruebaDoble {
+
+    public class MatricesWizard {
     /**
      * @param args the command line arguments
      */
