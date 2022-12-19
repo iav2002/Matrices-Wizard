@@ -6,11 +6,15 @@ package prueba.doble;
 import java.sql.SQLException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import static prueba.doble.mathSystem.N;
-import static prueba.doble.mathSystem.determinant;
-import static prueba.doble.mathSystem.display;
-import static prueba.doble.mathSystem.inverse;
+import static prueba.doble.mathSystem3x3.E;
+import static prueba.doble.mathSystem3x3.determinant3;
+import static prueba.doble.mathSystem3x3.display3;
+import static prueba.doble.mathSystem3x3.inverse3;
 import java.sql.*;
+import static prueba.doble.mathSystem2x2.N;
+import static prueba.doble.mathSystem2x2.determinant;
+import static prueba.doble.mathSystem2x2.display;
+import static prueba.doble.mathSystem2x2.inverse;
 
 /**
  *
@@ -195,17 +199,17 @@ import java.sql.*;
                
                while (true){ 
                System.out.println("M:");
-               System.out.println("0. Exit");
-               System.out.println("1. Solve 2 x 2");
+               System.out.println("1. Exit");
+               System.out.println("2. Solve 2 x 2");
                System.out.println("2. Solve 3 x 3");
                Scanner in = new Scanner(System.in);
                  Scanner choicer = new Scanner(System.in);
                 int choic = mySC.nextInt();
                
-               if (choic == 0) {
+               if (choic == 1) {
                     break;
                 } 
-               else if (choic == 1) {
+               else if (choic == 2) {
                     // process option 1
                 int i, j , n, b;
                 String literales = "";
@@ -296,12 +300,14 @@ import java.sql.*;
                 
                 
                 
-                }else if (choic == 2){
+                }else if (choic == 3){
+                
+                //SOLVE 3X3    
                 int i, j , n, b;
                 String literales = "";
                 char literal;
                 //User main input
-                n = N;
+                n = E;
                 //Lenght of matrix and for methods
                
                 //Array to store the inverse
@@ -335,12 +341,12 @@ import java.sql.*;
                 }
         
                 //takes the determinant
-                System.out.println("Determinant of the matrix is : " + determinant(matriz, n));
+                System.out.println("Determinant of the matrix is : " + determinant3(matriz, n));
 
 
                 //checks if the matriz has and inverse, if not the ecuation cant be performed 
-                if (inverse(matriz, inv));
-                display(inv);
+                if (inverse3(matriz, inv));
+                display3(inv);
         
                 //if there is an inverse its multiplied by the conts and is the result
                 // INV * CONTS = RESULT

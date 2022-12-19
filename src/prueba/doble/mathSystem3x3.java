@@ -10,10 +10,8 @@ import java.util.Scanner;
  *
  * @author ignacioalarconvarela
  */
-public class mathSystem {
-    
-    
-  static int N = userInput();
+public class mathSystem3x3 {
+    static int E = userInput();
    
    static int userInput() {
 
@@ -21,7 +19,7 @@ public class mathSystem {
         // if salse will go to the catch
         int userInput; // so the program can compared with the user input
         
-            System.out.print("Type if is an 2x2 ecuation or a 3x3 (n): ");
+            System.out.print("Type 3 to solve an ecuation 3x3: ");
             userInput = Integer.parseInt(myKb.nextLine());  // Validation for the input to be as requested in the "prompt"
                 
         return (userInput);  
@@ -54,7 +52,7 @@ public class mathSystem {
  
     /* Recursive function for finding determinant
     of matrix. n is current dimension of mat[][]. */
-    static int determinant(int matriz[][], int n)
+    static int determinant3(int matriz[][], int n)
     {
        
         int D = 0; // Initialize result
@@ -65,7 +63,7 @@ public class mathSystem {
             return matriz[0][0];
  
         // To store cofactors
-        int temp[][] = new int[N][N];
+        int temp[][] = new int[E][E];
  
         // To store sign multiplier
         int sign = 1;
@@ -76,7 +74,7 @@ public class mathSystem {
             // Getting Cofactor of mat[0][f]
             getCofactor(matriz, temp, 0, f, n);
             D += sign * matriz[0][f]
-                 * determinant(temp, n - 1);
+                 * determinant3(temp, n - 1);
  
             // terms are to be added with
             // alternate sign
@@ -88,7 +86,7 @@ public class mathSystem {
     static void adjoint(int matriz[][],int [][]adj)
 {
    	
-     if (N == 1)
+     if (E == 1)
 	
         {
 		adj[0][0] = 1;
@@ -97,14 +95,14 @@ public class mathSystem {
 
 	// temp is used to store cofactors of A[][]
 	int sign = 1;
-	int [][]temp = new int[N][N];
+	int [][]temp = new int[E][E];
 
-	for (int i = 0; i < N; i++)
+	for (int i = 0; i < E; i++)
 	{
-		for (int j = 0; j < N; j++)
+		for (int j = 0; j < E; j++)
 		{
 			// Get cofactor of A[i][j]
-			getCofactor(matriz, temp, i, j, N);
+			getCofactor(matriz, temp, i, j, E);
 
 			// sign of adj[j][i] positive if sum of row
 			// and column indexes is even.
@@ -112,18 +110,18 @@ public class mathSystem {
 
 			// Interchanging rows and columns to get the
 			// transpose of the cofactor matrix
-			adj[j][i] = (sign)*(determinant(temp, N-1));
+			adj[j][i] = (sign)*(determinant3(temp, E-1));
 		}
 	}
 }
 //
 // Function to calculate and store inverse, returns false if
 // matrix is singular
-        static boolean inverse(int matriz[][], float [][]inverse)
+        static boolean inverse3(int matriz[][], float [][]inverse)
         {
                 // Find determinant of A[][]
 
-                int det = determinant(matriz, N);
+                int det = determinant3(matriz, E);
                 if (det == 0)
                 {
                         System.out.print("Singular matrix, can't find its inverse");
@@ -131,12 +129,12 @@ public class mathSystem {
                 }
 
                 // Find adjoint
-                int [][]adj = new int[N][N];
+                int [][]adj = new int[E][E];
                 adjoint(matriz, adj);
 
                 // Find Inverse using formula "inverse(A) = adj(A)/det(A)"
-                for (int i = 0; i < N; i++)
-                        for (int j = 0; j < N; j++)
+                for (int i = 0; i < E; i++)
+                        for (int j = 0; j < E; j++)
                                 inverse[i][j] = adj[i][j]/(float)det;
 
                 return true;
@@ -145,22 +143,22 @@ public class mathSystem {
 
 
 
-           static void Display(int matriz[][])
+           static void Display3(int matriz[][])
         {
 
-                for (int i = 0; i < N; i++)
+                for (int i = 0; i < E; i++)
                 {
-                        for (int j = 0; j < N; j++)
+                        for (int j = 0; j < E; j++)
                                 System.out.print(matriz[i][j]+ " ");
                         System.out.println();
                 }
         }
-        static void display(float matriz[][])
+        static void display3(float matriz[][])
         {
 
-            for (int i = 0; i < N; i++)
+            for (int i = 0; i < E; i++)
                 {
-                     for (int j = 0; j < N; j++)
+                     for (int j = 0; j < E; j++)
 
                         System.out.printf("%.2f ", matriz[i][j]);
                          System.out.println();
@@ -168,3 +166,7 @@ public class mathSystem {
                 }
         }
 }
+    
+    
+    
+
