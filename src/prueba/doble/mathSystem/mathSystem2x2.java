@@ -106,7 +106,7 @@ public class mathSystem2x2 {
         
     static boolean inverse(int matriz[][], float [][]inverse)
         {
-                // Find determinant of N[][]
+                // Find determinant of matriz[][]
 
                 int det = determinant(matriz, N);
                 if (det == 0)

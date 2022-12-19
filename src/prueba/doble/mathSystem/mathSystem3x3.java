@@ -104,7 +104,7 @@ public class mathSystem3x3 {
 
         static boolean inverse3(int matriz[][], float [][]inverse)
         {
-                // Find determinant of E[][]
+                // Find determinant of matriz[][]
 
                 int det = determinant3(matriz, E);
                 if (det == 0)
