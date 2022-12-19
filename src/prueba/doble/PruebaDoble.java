@@ -26,9 +26,9 @@ import static prueba.doble.dosPorDos.display;
         
         int i, j , n, b;
         String literales = "";
-        char literal;
+       
         //input de todo
-        Scanner in = new Scanner(System.in);
+        
         //define longitud de ecuacion, para los metodos y matriz 
         n = N;
         //matriz para guardar la inversa
@@ -37,30 +37,62 @@ import static prueba.doble.dosPorDos.display;
         int [][]conts = new int[n][1];
         //matriz para guardar los coeficientes de las variables
         int[][] matriz = new int[n][n];
-       
+      Scanner in = new Scanner(System.in);
         for(i=0; i<n; i++)
         {
-            //saca las letras de las variables 
-            System.out.print("Type the letter of the first variable " + (i+1) + ": ");
-            do {
-                literal = in.nextLine().toLowerCase().charAt(0);
-            } while(!Character.isLetter(literal) || literales.contains(String.valueOf(literal)));
+            char literal = ' ';
+            do
+            {
+                System.out.print("Type the letter of the first variable " + (i+1) + ": ");
+                String input = in.nextLine().toLowerCase();
+                if(input.length() != 1 || !Character.isLetter(input.charAt(0)) || literales.contains(input))
+                {
+                    System.out.println("Invalid input. Please enter a single letter that has not been used before.");
+                }
+                else
+                {
+                    literal = input.charAt(0);
+                }
+            } while(literal == ' ');
             literales += literal;
         }
         
        for(i=0; i<n; i++)
+    {
+        for(j=0; j<n; j++)
         {
-            for(j=0; j<n; j++)
+            while(true)
             {
-                 //Saca los coeficientes y los guarda en matriz
-                System.out.print("The  coeficient '" + literales.charAt(j) + "' of the ecuation " + (i+1) + ": ");
-                matriz[i][j] = Integer.parseInt(in.nextLine());
+                try
+                {
+                    System.out.print("The  coeficient '" + literales.charAt(j) + "' of the ecuation " + (i+1) + ": ");
+                    String input = in.nextLine();
+                    matriz[i][j] = Integer.parseInt(input);
+                    break; // input was valid, so exit the loop
+                }
+                catch(NumberFormatException e)
+                {
+                    System.out.println("Invalid input. Please enter a number.");
+                }
             }
-             //Saca las constantes y las guarda en conts
-            System.out.print("The constant of the ecuation " + (i+1) + ": ");
-            conts[i][0] = Integer.parseInt(in.nextLine());
         }
-        
+
+        while(true)
+        {
+            try
+            {
+                System.out.print("The constant of the ecuation " + (i+1) + ": ");
+                String input = in.nextLine();
+                conts[i][0] = Integer.parseInt(input);
+                break; // input was valid, so exit the loop
+            }
+            catch(NumberFormatException e)
+            {
+                System.out.println("Invalid input. Please enter a number.");
+            }
+        }
+    }
+
         //saca la determinante, pero es lo podemos borrar, sirve sin esto 
         System.out.println("Determinant of the matrix is : " + determinant(matriz, n));
       
