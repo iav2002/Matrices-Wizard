@@ -67,39 +67,43 @@ public class usertools {
         // Handle errors for JDBC
         se.printStackTrace();
     }
-}
+ 
+    }
   
+  public void viewEquations(String login, String password) throws SQLException {
+    // Connect to the database
+    Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+    // Create a statement
+    Statement stmt = conn.createStatement();
+
+    // Select the user's id from the "logins" table
+    ResultSet rs = stmt.executeQuery("SELECT id FROM logins WHERE login = '" + login + "' AND password = '" + password + "'");
+
+    // Get the user's id
+    int userId = 0;
+    if (rs.next()) {
+      userId = rs.getInt("id");
+    } else {
+      System.out.println("Invalid login or password");
+      return;
+    }
+
+    // Select the rows from the "equations" table where the user_id matches the user's id
+    rs = stmt.executeQuery("SELECT * FROM equations WHERE user_id = " + userId);
+
+    // Print the results
+    while (rs.next()) {
+      System.out.println("Equation: " + rs.getString("equation"));
+      System.out.println("Solution: " + rs.getString("solution"));
+    }
+
+    // Close the connection
+    conn.close();
+  }
+}  
     
     
-    
-//    MEJOR PRACTICE SEGUN CHATGPT funciona igual
-//    public void updateValues(String login, String password) throws SQLException {
-//    Connection conn = null;
-//    PreparedStatement stmt = null;
-//    try {
-//        // Open a connection
-//        conn = DriverManager.getConnection(DB_URL, USER, PASS);
-//
-//        // Create a prepared statement
-//        String sql = "UPDATE logins SET password = ? WHERE login = ?";
-//        stmt = conn.prepareStatement(sql);
-//
-//        // Set the values for the prepared statement's placeholders
-//        stmt.setString(1, password);
-//        stmt.setString(2, login);
-//
-//        // Execute the update
-//        stmt.executeUpdate();
-//
-//        // Close the prepared statement and connection objects
-//        stmt.close();
-//        conn.close();
-//
-//    } catch (SQLException se) {
-//        // Handle errors for JDBC
-//        se.printStackTrace();
-//    }
-//}
 
     
-}
+

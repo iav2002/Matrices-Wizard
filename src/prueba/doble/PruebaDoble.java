@@ -10,8 +10,6 @@ import static prueba.doble.mathSystem3x3.E;
 import static prueba.doble.mathSystem3x3.determinant3;
 import static prueba.doble.mathSystem3x3.display3;
 import static prueba.doble.mathSystem3x3.inverse3;
-import java.sql.*;
-import java.util.List;
 import static prueba.doble.mathSystem2x2.N;
 import static prueba.doble.mathSystem2x2.determinant;
 import static prueba.doble.mathSystem2x2.display;
@@ -81,7 +79,7 @@ import static prueba.doble.mathSystem2x2.inverse;
             // Display menu for admins
         
          while (true) {
-               System.out.println("Welcome, admin! Here are your menu options:");
+               System.out.println("Welcome, " + fInput + "(you are logged as ADMIN ). Here are your menu options:");
                    System.out.println("1. - Modify your profile");
                    System.out.println("2. - Access a list of all other users in the system");
                    System.out.println("3. - Remove other users from the system.");
@@ -102,10 +100,10 @@ import static prueba.doble.mathSystem2x2.inverse;
                     // crear metodo para poder modificar Admin
                      Scanner aSc = new Scanner(System.in);
                     System.out.println("Modify your information.");
-                    System.out.println("Introduce your new username:");
+                    System.out.print("Introduce your new username:");
                     String adminNewName;
                     adminNewName = aSc.nextLine();
-                    System.out.println("Introduce your new password:");
+                    System.out.print("Introduce your new password:");
                     String adminNewPass;
                     adminNewPass = aSc.nextLine();
                     adminTools myTools = new adminTools();
@@ -118,8 +116,9 @@ import static prueba.doble.mathSystem2x2.inverse;
                 case 2 -> {
                     //crear metodo para ver los usuarios sign upeados (llamar desde login system)
                     adminTools otherTool = new adminTools();
+                    System.out.println("//////////////");
                     otherTool.retrieveValuesFromTable("logins");
-                    System.out.println("//////////");
+                    System.out.println("//////////////");
                     break;
                 }
                 case 3 -> {
@@ -134,11 +133,16 @@ import static prueba.doble.mathSystem2x2.inverse;
                     otherTool.deleteValuesFromTable(rowSelected);
                     }while(rowSelected != 0);
                     //otherTool.retrieveValuesFromTable("logins");
-                    System.out.println("User deleted Succesfully");
+                    System.out.println("User deleted Succesfully, Remember to exit this menu type 0!");
                     break;
                 }
                 case 4 -> {
-                  
+                  System.out.println("Below you can find the users. Select the id of the user which operations you'd like to see.");
+                    adminTools otherTool = new adminTools();
+                    otherTool.retrieveValuesFromTable("logins");
+                    int userIDChoice = mySC.nextInt();
+                   
+                    otherTool.printEquationsForUser(userIDChoice);
                     
                     //ver operaciones hechas por un usuario
                 }
@@ -164,7 +168,7 @@ import static prueba.doble.mathSystem2x2.inverse;
             // Display menu for users
                                    
          while(true){     
-             System.out.println("Welcome, user! Here are your menu options:");
+             System.out.println("Welcome, " + fInput + "(you are logged as USER). Here are your menu options:");
                    System.out.println("1. Modify your profile");
                    System.out.println("2. Solve systems of linear equations of two and three variables");
                    System.out.println("3. See the system of equations computed and their solutions");
@@ -441,7 +445,7 @@ import static prueba.doble.mathSystem2x2.inverse;
                                   // z = solucion
                                   System.out.println(literales.charAt(b) + " = " + result[b][0] + " ");
                                   String solucion = (literales.charAt(b) + " = " + result[b][0] + " ");
-                                  String hola = "3";
+                                  
                                   myMT.insertEquation(userId, equations, solucion);
                               
                                   
@@ -458,6 +462,10 @@ import static prueba.doble.mathSystem2x2.inverse;
          
           case 3->{
               //Ver los sistemas resueltos por el usuario en el que estamos logeados
+            usertools aTool = new usertools();
+            System.out.println("////////////////////");  
+            aTool.viewEquations(fInput, sInput);
+                System.out.println("//////////////////");
               break;
               
           }

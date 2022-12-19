@@ -73,13 +73,37 @@ public class adminTools {
         String sql = "DELETE FROM logins WHERE ID = " + id;
         id = stmt.executeUpdate(sql);
         if(id == 0){
-            System.out.println("No rows deleted. Exiting DELETE function.");
+            System.out.println("No id found! Just try one that actually exists!");
         }else if (id != 0) {
-            System.out.println(id + " row deleted");
+            System.out.println(id + " User deleted Succesfully! Remember to exit this menu type 0!");
         }
         
         //Close the connection
         conn.close();
           
     }
+public void printEquationsForUser(int userId) throws SQLException {
+    // Replace YOUR_DATABASE_URL, YOUR_USERNAME, and YOUR_PASSWORD with the
+    // appropriate values for your database
+  
+        // Create a statement
+        try ( // Connect to the database
+                 Connection conn = DriverManager.getConnection(DB_URL, USER, PASS)) {
+            // Create a statement
+            Statement stmt = conn.createStatement();
+            // Select the rows from the "equations" table where the user_id matches the user's input
+            ResultSet rs = stmt.executeQuery("SELECT * FROM equations WHERE user_id = " + userId);
+            // Print the results
+            while (rs.next()) {
+                System.out.println("Equation ID: " + rs.getInt("equation_id"));
+                System.out.println("User ID: " + rs.getInt("user_id"));
+                System.out.println("Equation: " + rs.getString("equation"));
+                System.out.println("Solution: " + rs.getString("solution"));
+            }
+            // Close the connection
+        }
+  }
 }
+
+
+
