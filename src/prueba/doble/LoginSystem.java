@@ -52,6 +52,19 @@ public class LoginSystem {
         }
     }
     
+    public int getUserId(String login, String password) throws SQLException {
+        String selectSql = "SELECT id FROM logins WHERE login = ? AND password = ?";
+        PreparedStatement stmt = conn.prepareStatement(selectSql);
+        stmt.setString(1, login);
+        stmt.setString(2, password);
+        try (ResultSet rs = stmt.executeQuery()) {
+        if (rs.next()) {
+          return rs.getInt("id");
+        }
+        return -1; // return -1 if no matching user was found
+      }
+    }
+    
     public String getPasswordForLogin(String login, String password) throws SQLException {
     String verifySql = "SELECT password FROM logins WHERE login = ? AND password = ?";
     try (PreparedStatement stmt = conn.prepareStatement(verifySql)) {

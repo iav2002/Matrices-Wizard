@@ -59,14 +59,15 @@ import java.sql.*;
           
              String fInput;
              String sInput;
-            
+           
              System.out.print("Please introduce your username:");             
              fInput = mySC.next();
                 
              System.out.print("Introduce your password:");          
              sInput = mySC.next();
              myL.getPasswordForLogin(fInput,sInput);
-   
+             int userId = myL.getUserId(fInput, sInput);
+             
             String role = myL.getRoleForLogin(fInput, sInput); //chequea que role tiene el usuario que acaba de logearse
       
          if (role.equals("admin")) {
@@ -128,6 +129,8 @@ import java.sql.*;
                     System.out.println("press 5 to go back to the previous menu");
                 }
                 case 4 -> {
+                  
+                    
                     //ver operaciones hechas por un usuario
                 }
                 case 5 -> {
@@ -189,14 +192,28 @@ import java.sql.*;
          
           case 2->{
               //Math
-           
-              int i, j , n, b;
+               
+               while (true){ 
+               System.out.println("M:");
+               System.out.println("0. Exit");
+               System.out.println("1. Solve 2 x 2");
+               System.out.println("2. Solve 3 x 3");
+               Scanner in = new Scanner(System.in);
+                 Scanner choicer = new Scanner(System.in);
+                int choic = mySC.nextInt();
+               
+               if (choic == 0) {
+                    break;
+                } 
+               else if (choic == 1) {
+                    // process option 1
+                int i, j , n, b;
                 String literales = "";
                 char literal;
                 //User main input
-                Scanner in = new Scanner(System.in);
-                //Lenght of matrix and for methods
                 n = N;
+                //Lenght of matrix and for methods
+               
                 //Array to store the inverse
                 float [][]inv = new float[n][n];
                 //Array to store the constants of the ecuations
@@ -271,16 +288,122 @@ import java.sql.*;
                     System.out.println(literales.charAt(b) + " = " + result[b][0] + " ");
                     String solucion = (literales.charAt(b) + " = " + result[b][0] + " ");
                     String hola = "hola"; 
-                    int l = 3;
-                    myMT.insertEquation(l, hola, solucion);
+                    myMT.insertEquation(userId, hola, solucion);
+                 
+                 
                 }
                 
+                
+                
+                
+                }else if (choic == 2){
+                int i, j , n, b;
+                String literales = "";
+                char literal;
+                //User main input
+                n = N;
+                //Lenght of matrix and for methods
+               
+                //Array to store the inverse
+                float [][]inv = new float[n][n];
+                //Array to store the constants of the ecuations
+                int [][]conts = new int[n][1];
+                //Array to store the coeficients of the ecuations 
+                int[][] matriz = new int[n][n];
+
+            for(i=0; i<n; i++)
+                {
+                    //gets the letters for the ecuations from the user 
+                    System.out.print("Type the letter of the first variable " + (i+1) + ": ");
+                    do {
+                        literal = in.nextLine().toLowerCase().charAt(0);
+                    } while(!Character.isLetter(literal) || literales.contains(String.valueOf(literal)));
+                    literales += literal;
+                }
+        
+             for(i=0; i<n; i++)
+                {
+                    for(j=0; j<n; j++)
+                    {
+                         //gets the coeficients and store them in array matriz
+                        System.out.print("The  coeficient '" + literales.charAt(j) + "' of the ecuation " + (i+1) + ": ");
+                        matriz[i][j] = Integer.parseInt(in.nextLine());
+                    }
+                     //gets the constants and store them in array conts
+                    System.out.print("The  n = N;constant of the ecuation " + (i+1) + ": ");
+                    conts[i][0] = Integer.parseInt(in.nextLine());
+                }
+        
+                //takes the determinant
+                System.out.println("Determinant of the matrix is : " + determinant(matriz, n));
+
+
+                //checks if the matriz has and inverse, if not the ecuation cant be performed 
+                if (inverse(matriz, inv));
+                display(inv);
+        
+                //if there is an inverse its multiplied by the conts and is the result
+                // INV * CONTS = RESULT
+                float result[][] = new float [n][1];
+                for ( i = 0; i < n; i++) 
+                {
+                    for ( j = 0; j < 1; j++) 
+                    {
+                        for (int k = 0; k < n; k++)
+                        {	 
+                            result[i][j] = result[i][j] + inv[i][k] * conts[k][j];
+                        }
+                    }
+                }
+
+                //Print the system of ecuations with out the letters
+                System.out.println("Thats how your linear ecuation looks without the variables loquita");
+                 for( i=0; i<n; i++)
+                {
+                    for( j=0; j<n; j++)
+                    {
+                        System.out.print(" "+matriz[i][j]);
+                    } 
+                    System.out.print("  =  "+ conts[i][0]);
+                    System.out.println();
+                }
+
+             //print the solution of the system
+                System.out.println("The product is:");
+                for( b=0; b<n; b++)
+                {   
+                    // x =  solucion
+                    // y = solucion (no importa si es 2x2 3x3 4x4 5x5 
+                    // z = solucion
+                    
+                    System.out.println(literales.charAt(b) + " = " + result[b][0] + " ");
+                    String solucion = (literales.charAt(b) + " = " + result[b][0] + " ");
+                    String hola = "hola"; 
+                    myMT.insertEquation(userId, hola, solucion);
+                 
+                   
+                    break;
+                }
+                
+                
+                } 
+               
+               
+               
+               else {
+                    System.out.println("Invalid choice.");
+                }
+            
+               
+               }
+               
+                  
            
                 
-                
+               
     
-
-                
+            
+              
               
           }//close case 2
          

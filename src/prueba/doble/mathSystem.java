@@ -13,8 +13,8 @@ import java.util.Scanner;
 public class mathSystem {
     
     
-    static final int N = userInput();
-    
+  static int N = userInput();
+   
    static int userInput() {
 
         Scanner myKb = new Scanner(System.in);
@@ -22,13 +22,10 @@ public class mathSystem {
         int userInput; // so the program can compared with the user input
         
             System.out.print("Type if is an 2x2 ecuation or a 3x3 (n): ");
-              userInput = Integer.parseInt(myKb.nextLine());  // Validation for the input to be as requested in the "prompt"
-            
-            if (userInput > 0) 
-                {
-                }     
-        return (userInput);  // we have the valid user input
-
+            userInput = Integer.parseInt(myKb.nextLine());  // Validation for the input to be as requested in the "prompt"
+                
+        return (userInput);  
+      
     }
     static void getCofactor(int matriz[][], int temp[][],
                             int p, int q, int n)
