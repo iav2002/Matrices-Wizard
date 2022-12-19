@@ -213,7 +213,7 @@ import static prueba.doble.mathSystem2x2.inverse;
                       case 2 ->  {
                               int i, j , n, b;
                               String literales = "";
-                              char literal;
+                             
    
                              n = N;        //Lenght of matrix and for methods
                               
@@ -224,27 +224,66 @@ import static prueba.doble.mathSystem2x2.inverse;
                               //Array to store the coeficients of the ecuations
                               int[][] matriz = new int[n][n];
                              
-                              for(i=0; i<n; i++)
-                              {
-                                  //gets the letters for the ecuations from the user
-                                  System.out.print("Type the letter of the first variable " + (i+1) + ": ");
-                                  do {
-                                      literal = in.nextLine().toLowerCase().charAt(0);
-                                  } while(!Character.isLetter(literal) || literales.contains(String.valueOf(literal)));
-                                  literales += literal;
-                              }             for(i=0; i<n; i++)
-                              {
-                                  for(j=0; j<n; j++)
-                                  {
-                                      //gets the coeficients and store them in array matriz
-                                      System.out.print("The  coeficient '" + literales.charAt(j) + "' of the ecuation " + (i+1) + ": ");
-                                      matriz[i][j] = Integer.parseInt(in.nextLine());
-                                  }
-                                  //gets the constants and store them in array conts
-                                  System.out.print("The constant of the ecuation " + (i+1) + ": ");
-                                  conts[i][0] = Integer.parseInt(in.nextLine());
-                              }             //takes the determinant
-                              System.out.println("Determinant of the matrix is : " + determinant(matriz, n));
+                               for(i=0; i<n; i++)
+                                {
+                                    char literal = ' ';
+                                    do
+                                    {
+                                        System.out.print("Type the letter of the first variable " + (i+1) + ": ");
+                                        String input = in.nextLine().toLowerCase();
+                                        if(input.length() != 1 || !Character.isLetter(input.charAt(0)) || literales.contains(input))
+                                        {
+                                            System.out.println("Invalid input. Please enter a single letter that has not been used before.");
+                                        }
+                                        else
+                                        {
+                                            literal = input.charAt(0);
+                                        }
+                                    } while(literal == ' ');
+                                    literales += literal;
+                                }          
+                              
+                            
+                              
+                              
+                              
+       for(i=0; i<n; i++)
+    {
+        for(j=0; j<n; j++)
+        {
+            while(true)
+            {
+                try
+                {
+                    System.out.print("The  coeficient '" + literales.charAt(j) + "' of the ecuation " + (i+1) + ": ");
+                    String input = in.nextLine();
+                    matriz[i][j] = Integer.parseInt(input);
+                    break; // input was valid, so exit the loop
+                }
+                catch(NumberFormatException e)
+                {
+                    System.out.println("Invalid input. Please enter a number.");
+                }
+            }
+        }
+
+        while(true)
+        {
+            try
+            {
+                System.out.print("The constant of the ecuation " + (i+1) + ": ");
+                String input = in.nextLine();
+                conts[i][0] = Integer.parseInt(input);
+                break; // input was valid, so exit the loop
+            }
+            catch(NumberFormatException e)
+            {
+                System.out.println("Invalid input. Please enter a number.");
+            }
+        }
+    }          //takes the determinant
+                              
+                         System.out.println("Determinant of the matrix is : " + determinant(matriz, n));
                               //checks if the matriz has and inverse, if not the ecuation cant be performed
                               if (inverse(matriz, inv));
                               display(inv);
@@ -286,11 +325,12 @@ import static prueba.doble.mathSystem2x2.inverse;
                               }   
                         break;
                       }
+                      
                       case 3 ->    {
                               
                             int i, j , n, b;
                               String literales = "";
-                              char literal;
+                              
                               //User main input
                               n = E;
                               //Lenght of matrix and for methods
@@ -300,26 +340,66 @@ import static prueba.doble.mathSystem2x2.inverse;
                               int [][]conts = new int[n][1];
                               //Array to store the coeficients of the ecuations
                               int[][] matriz = new int[n][n];
-                              for(i=0; i<n; i++)
-                              {
-                                  //gets the letters for the ecuations from the user
-                                  System.out.print("Type the letter of the first variable " + (i+1) + ": ");
-                                  do {
-                                      literal = in.nextLine().toLowerCase().charAt(0);
-                                  } while(!Character.isLetter(literal) || literales.contains(String.valueOf(literal)));
-                                  literales += literal;
-                              }             for(i=0; i<n; i++)
-                              {
-                                  for(j=0; j<n; j++)
-                                  {
-                                      //gets the coeficients and store them in array matriz
-                                      System.out.print("The  coeficient '" + literales.charAt(j) + "' of the ecuation " + (i+1) + ": ");
-                                      matriz[i][j] = Integer.parseInt(in.nextLine());
-                                  }
-                                  //gets the constants and store them in array conts
-                                  System.out.print("The constant of the ecuation " + (i+1) + ": ");
-                                  conts[i][0] = Integer.parseInt(in.nextLine());
-                              }             //takes the determinant
+                              
+                       for(i=0; i<n; i++)
+                        {
+                            char literal = ' ';
+                            do
+                            {
+                                System.out.print("Type the letter of the first variable " + (i+1) + ": ");
+                                String input = in.nextLine().toLowerCase();
+                                if(input.length() != 1 || !Character.isLetter(input.charAt(0)) || literales.contains(input))
+                                {
+                                    System.out.println("Invalid input. Please enter a single letter that has not been used before.");
+                                }
+                                else
+                                {
+                                    literal = input.charAt(0);
+                                }
+                            } while(literal == ' ');
+                            literales += literal;
+                        }           
+                              
+                              
+                    for(i=0; i<n; i++)
+                        {
+                        for(j=0; j<n; j++)
+                        {
+                            while(true)
+                            {
+                                try
+                                {
+                                    System.out.print("The  coeficient '" + literales.charAt(j) + "' of the ecuation " + (i+1) + ": ");
+                                    String input = in.nextLine();
+                                    matriz[i][j] = Integer.parseInt(input);
+                                    break; // input was valid, so exit the loop
+                                }
+                                catch(NumberFormatException e)
+                                {
+                                    System.out.println("Invalid input. Please enter a number.");
+                                }
+                            }
+                        }
+
+                        while(true)
+                        {
+                            try
+                            {
+                                System.out.print("The constant of the ecuation " + (i+1) + ": ");
+                                String input = in.nextLine();
+                                conts[i][0] = Integer.parseInt(input);
+                                break; // input was valid, so exit the loop
+                            }
+                            catch(NumberFormatException e)
+                            {
+                                System.out.println("Invalid input. Please enter a number.");
+                            }
+                        }
+                    }      //takes the determinant
+                             
+                              
+                              
+                              
                               System.out.println("Determinant of the matrix is : " + determinant3(matriz, n));
                               System.out.println("");
                               System.out.println("Inverse is:");
